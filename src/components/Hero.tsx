@@ -10,7 +10,7 @@ import { useTheme } from '../lib/theme';
 import HeroVideo from './HeroVideo';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const NAME = 'SUBHAJIT DAS';
+const NAME = 'SUBHAJIT';
 
 function RotatingRole({ start }: { start: boolean }) {
   const [i, setI] = useState(0);
@@ -180,7 +180,7 @@ export default function Hero({ ready }: { ready: boolean }) {
         {/* The giant name. She stands in front of it (z-10 film vs z-0 name). */}
         <motion.h1
           style={{ x: nameX }}
-          className="relative z-0 -mx-1 mt-2 text-[14.5vw] md:text-[clamp(4rem,16.5vw,18rem)] leading-[0.8] font-semibold tracking-[-0.065em] whitespace-nowrap select-none md:-mx-2"
+          className="relative z-0 -mx-1 mt-2 text-[18vw] md:text-[clamp(4rem,20vw,22rem)] leading-[0.8] font-semibold tracking-[-0.065em] whitespace-nowrap select-none md:-mx-2"
           aria-label={`Hello, I'm ${profile.name}`}
         >
           <motion.span aria-hidden="true" className="inline-block" style={{ x: nameShiftX }}>
@@ -203,7 +203,7 @@ export default function Hero({ ready }: { ready: boolean }) {
 
         <motion.div style={{ y: textY, opacity: fade }} className="relative z-20 mt-8 md:mt-10 md:max-w-[46%] lg:max-w-[40%]">
           <motion.p {...fadeIn(0.7)} className="max-w-[36ch] text-[clamp(1.05rem,1.5vw,1.35rem)] leading-[1.4] tracking-[-0.015em] text-muted">
-            A developer who turns ideas into <span className="text-fg">digital experiences</span> — from LLM-powered platforms to payment systems.
+            I create bold visuals and motion-led designs that help brands stand out.
           </motion.p>
 
           <motion.div {...fadeIn(0.9)} className="mt-8 flex flex-wrap items-center gap-3">
