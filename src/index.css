@@ -21,9 +21,9 @@
 
 :root,
 :root[data-theme='dark'] {
-  --bg: #080808;
-  --surface: #101010;
-  --surface-2: #171717;
+  --bg: #070101;
+  --surface: #100303;
+  --surface-2: #160505;
   --fg: #f5f5f5;
   --muted: #a0a0a0;
   --faint: #5c5c5c;
@@ -79,6 +79,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
+}
+
+
+/* Global cinematic burgundy ambient lighting — dark theme only. */
+:root[data-theme='dark'] html {
+  background: #070101;
+}
+:root[data-theme='dark'] body {
+  background-color: #070101;
+  background-image:
+    radial-gradient(ellipse 58% 34% at 72% 8%, rgba(185, 20, 34, 0.34) 0%, rgba(115, 12, 22, 0.18) 46%, transparent 78%),
+    radial-gradient(ellipse 52% 38% at 12% 36%, rgba(115, 12, 22, 0.25) 0%, rgba(53, 4, 9, 0.12) 52%, transparent 78%),
+    radial-gradient(ellipse 62% 36% at 82% 72%, rgba(145, 18, 30, 0.24) 0%, rgba(53, 4, 9, 0.12) 48%, transparent 78%),
+    radial-gradient(ellipse 55% 34% at 32% 96%, rgba(105, 0, 0, 0.22) 0%, transparent 76%);
+  background-attachment: fixed;
 }
 
 ::selection {
