@@ -29,8 +29,12 @@ export default function HeroVideo({ play }: { play: boolean }) {
 
   return (
     <div
-      className={`hero-film relative mx-auto h-full w-fit ${ended || showPortrait ? 'is-idle' : ''}`}
-      style={{ transform: 'scale(1.16)', transformOrigin: '50% 100%' }}
+      className={`hero-film relative mx-auto h-full w-fit overflow-hidden ${ended || showPortrait ? 'is-idle' : ''}`}
+      style={{
+        transform: 'scale(1.16)',
+        transformOrigin: '50% 0%',
+        clipPath: 'inset(0 0 16% 0)',
+      }}
     >
       <div aria-hidden="true" className="hero-film__pool" />
       {showPortrait ? (
