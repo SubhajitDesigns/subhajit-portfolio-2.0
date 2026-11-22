@@ -21,9 +21,9 @@
 
 :root,
 :root[data-theme='dark'] {
-  --bg: #070101;
-  --surface: #100303;
-  --surface-2: #160505;
+  --bg: #080808;
+  --surface: #101010;
+  --surface-2: #171717;
   --fg: #f5f5f5;
   --muted: #a0a0a0;
   --faint: #5c5c5c;
