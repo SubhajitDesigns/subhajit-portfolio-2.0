@@ -9,9 +9,9 @@ const byId = (id: string) => skillCategories.find((c) => c.id === id)?.skills ??
 const ORBITS = (() => {
   const seen = new Set<string>();
   return [
-    ['languages', 'ai'],
-    ['frontend', 'backend'],
-    ['databases', 'tools'],
+    ['graphic-design', 'branding'],
+    ['visual-design', 'video-editing'],
+    ['motion-graphics', 'creative-tools'],
   ].map((ids) => ids.flatMap(byId).filter((s) => !seen.has(s) && (seen.add(s), true)));
 })();
 import SectionLabel from './ui/SectionLabel';
@@ -70,7 +70,7 @@ export default function Expertise() {
           />
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-[46ch] text-muted">
-              Every skill here comes straight from my résumé — no percentage bars. Hover one to see which project put it to work.
+              From brand identities and visual design to video editing and motion graphics — the creative skills behind my work.
             </p>
           </Reveal>
         </div>
