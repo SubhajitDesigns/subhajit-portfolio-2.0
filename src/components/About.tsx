@@ -81,13 +81,13 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-[2px] border border-line bg-line md:mt-24 md:grid-cols-4">
+      <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-[2px] border border-line bg-line md:mt-16 md:grid-cols-4">
         {stats.map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.08} className="bg-bg p-6 md:p-8">
-            <div className="text-[clamp(2.6rem,5vw,4.5rem)] leading-none font-medium tracking-[-0.05em]">
+          <Reveal key={s.label} delay={i * 0.08} className="bg-bg p-4 md:p-6">
+            <div className="text-[clamp(2rem,3.8vw,3.5rem)] leading-none font-medium tracking-[-0.05em]">
               <Counter {...s} />
             </div>
-            <div className="mt-4 text-sm text-muted">{s.label}</div>
+            <div className="mt-2 text-xs md:text-sm text-muted">{s.label}</div>
           </Reveal>
         ))}
       </div>
