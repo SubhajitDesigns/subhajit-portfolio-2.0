@@ -5,8 +5,8 @@
 
 export const profile = {
   fullName: 'Dasari Venkata Ratna Sri Sushmita',
-  name: 'Sushmita Dasari',
-  first: 'Sushmita',
+  name: 'Subhajit',
+  first: 'Subhajit',
   email: 'sushmitadasari17@gmail.com',
   location: 'Surampalem, Andhra Pradesh',
   timezone: 'Asia/Kolkata',
