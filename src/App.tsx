@@ -1,27 +1,38 @@
-import React,{useEffect,useState,useRef} from 'react';
-import {AnimatePresence,motion,useReducedMotion} from 'framer-motion';
-import {ArrowDownRight,ArrowUpRight,Sun,Moon,Menu,X,ArrowRight,MoveUpRight,Mail,Phone,MapPin} from 'lucide-react';
-import {profile,projects,experience,clients} from './data';
-const ease=[0.16,1,0.3,1] as const;
-function Loader({done}:{done:()=>void}){const [count,setCount]=useState(0);useEffect(()=>{if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}let start=performance.now(),raf=0;const tick=(now:number)=>{const p=Math.min(1,(now-start)/1450);setCount(Math.round((1-Math.pow(1-p,3))*100));if(p<1)raf=requestAnimationFrame(tick);else setTimeout(done,280)};raf=requestAnimationFrame(tick);return()=>cancelAnimationFrame(raf)},[done]);return <motion.div className="loader" initial={{y:0}} animate={{y:'-100%'}} transition={{delay:1.85,duration:1,ease}}><div className="loader-top"><span>SUBHAJIT DAS / PORTFOLIO</span><span>© {new Date().getFullYear()}</span></div><div className="loader-name">Subhajit<span>.</span></div><div className="loader-bottom"><span>DESIGN / MOTION / STORYTELLING</span><strong>{String(count).padStart(3,'0')}</strong></div><div className="loader-line" style={{width:count+'%'}}/></motion.div>}
-function Reveal({children,delay=0}:{children:React.ReactNode;delay?:number}){return <motion.div initial={{opacity:0,y:28}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-70px'}} transition={{duration:.85,delay,ease}}>{children}</motion.div>}
-export default function App(){const [ready,setReady]=useState(false),[theme,setTheme]=useState<'dark'|'light'>(()=>{try{return localStorage.getItem('subh-theme')==='light'?'light':'dark'}catch{return'dark'}}),[menu,setMenu]=useState(false),[modal,setModal]=useState<number|null>(null),[active,setActive]=useState('home'),[clock,setClock]=useState('');const reduce=useReducedMotion();const nav=[['home','Home'],['about','About'],['expertise','Expertise'],['projects','Work'],['experience','Experience'],['contact','Contact']];const themeBtn=useRef<HTMLButtonElement>(null);
-useEffect(()=>{document.documentElement.dataset.theme=theme;try{localStorage.setItem('subh-theme',theme)}catch{}},[theme]);
-useEffect(()=>{const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&setActive(e.target.id)),{rootMargin:'-35% 0px -55% 0px'});nav.forEach(([id])=>{const el=document.getElementById(id);if(el)io.observe(el)});return()=>io.disconnect()},[]);
-useEffect(()=>{const f=(e:KeyboardEvent)=>{if(e.key==='Escape'){setModal(null);setMenu(false)}};window.addEventListener('keydown',f);return()=>window.removeEventListener('keydown',f)},[]);
-useEffect(()=>{const fmt=new Intl.DateTimeFormat('en-IN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kolkata'});const tick=()=>setClock(fmt.format(new Date()));tick();const id=setInterval(tick,15000);return()=>clearInterval(id)},[]);
-const toggleTheme=()=>{const next=theme==='dark'?'light':'dark';const x=themeBtn.current?.getBoundingClientRect();const doc=document as Document&{startViewTransition?:(cb:()=>void)=>{ready:Promise<void>}};if(doc.startViewTransition&&!reduce){const t=doc.startViewTransition(()=>setTheme(next));t.ready.then(()=>{const px=x?x.left+x.width/2:innerWidth-40,py=x?x.top+x.height/2:40,r=Math.hypot(innerWidth,innerHeight);document.documentElement.animate({clipPath:[`circle(0px at ${px}px ${py}px)`,`circle(${r}px at ${px}px ${py}px)`]}, {duration:900,easing:'cubic-bezier(.76,0,.24,1)',pseudoElement:'::view-transition-new(root)'})})}else setTheme(next)};
-const label=(n:string,t:string)=><div className="section-label"><span>{n}</span><i/>{t}</div>;
-return <div className="site"><AnimatePresence>{!ready&&<Loader done={()=>setReady(true)}/>}</AnimatePresence><div className="grain"/>
-<header className="topbar"><a className="brand" href="#home"><span>SD</span><b>SUBHAJIT DAS</b></a><nav className="desktop-nav">{nav.map(([id,t])=><a className={active===id?'active':''} href={'#'+id} key={id}>{t}</a>)}</nav><div className="actions"><button ref={themeBtn} className="toggle" onClick={toggleTheme} aria-label="Toggle color theme">{theme==='dark'?<Sun/>:<Moon/>}</button><button className="toggle menu-btn" onClick={()=>setMenu(!menu)} aria-label="Toggle menu">{menu?<X/>:<Menu/>}</button></div></header>
-<AnimatePresence>{menu&&<motion.nav className="mobile-nav" initial={{clipPath:'inset(0 0 100% 0)'}} animate={{clipPath:'inset(0)'}} exit={{clipPath:'inset(0 0 100% 0)'}} transition={{duration:.7,ease}}>{nav.map(([id,t],i)=><a href={'#'+id} onClick={()=>setMenu(false)} key={id}><small>0{i+1}</small>{t}</a>)}</motion.nav>}</AnimatePresence>
-<main>
-<section id="home" className="hero hero-reference"><div className="hero-meta"><span><i/> AVAILABLE FOR SELECT PROJECTS</span><span>KOLKATA, INDIA · {clock} IST</span></div><div className="hero-dots"/><div className="hero-intro"><span className="hello">Hello, I’m</span><span className="role-dash">— CREATIVE ANALYST · DESIGNER · VIDEO EDITOR</span></div><div className="hero-name-back" aria-label="Subhajit Das"><span>SUBHAJIT</span><span>DAS</span></div><img className="hero-portrait" src="https://raw.githubusercontent.com/SubhajitDesigns/subhajitdesigns.github.io/main/portrait.webp" alt="Subhajit Das" fetchPriority="high"/><div className="hero-bottom-copy"><p>I turn ideas into <strong>impactful visuals</strong><br/>— helping brands connect through design and motion.</p><div className="hero-ctas"><a className="hero-primary" href="#projects">View selected work <ArrowDownRight/></a><a className="hero-secondary" href={`mailto:${profile.email}`}>Let’s talk <ArrowUpRight/></a></div></div><a className="hero-seal" href="#about" aria-label="Scroll to explore"><span>DESIGN · MOTION · VISUAL STORYTELLING ·</span><b><ArrowDownRight/></b></a><div className="pull-cord"><i/><span/></div><div className="hero-status"><span>SCROLL TO EXPLORE</span><span>7+ YEARS · 50+ BRANDS · 8K+ CREATIVE ASSETS</span><span>{clock} IST</span></div></section>
-<section id="about" className="section"><div className="section-head">{label('01','A LITTLE ABOUT ME')}<small>01 — 06</small></div><div className="about-grid"><Reveal><h2>Good design<br/>is felt <i>before</i><br/>it is understood.</h2></Reveal><Reveal delay={.12}><div className="copy"><p className="lead">Hello, I’m Subhajit — a <b>Creative Analyst</b> with a designer’s eye and a storyteller’s mindset.</p><p>{profile.about}</p><p>From brand campaigns and social media creatives to motion-led content and video edits, I bring consistency, craft and attention to detail to every project.</p><div className="stats"><div><strong>07<span>+</span></strong><small>YEARS OF EXPERIENCE</small></div><div><strong>50<span>+</span></strong><small>BRANDS WORKED WITH</small></div><div><strong>8K<span>+</span></strong><small>CREATIVE ASSETS</small></div></div></div></Reveal></div></section>
-<section id="expertise" className="section expertise"><div className="section-head">{label('02','WHAT I BRING')}<small>02 — 06</small></div><div className="section-intro"><Reveal><h2>Ideas into<br/><i>impactful visuals.</i></h2></Reveal><p>From the first sketch to the final export, I connect creative thinking with clean execution across every touchpoint.</p></div><div className="expertise-list">{[['01','Graphic Design','Social media creatives, digital ads, banners, posters and campaign systems.'],['02','Video Editing','Short-form content, promotional edits, pacing, sound and storytelling.'],['03','Motion Graphics','Kinetic typography, text animation, transitions and motion-led assets.'],['04','Creative Direction','Visual concepts, campaign consistency and design decisions with purpose.']].map(x=><Reveal key={x[0]}><article className="expertise-row"><small>{x[0]}</small><h3>{x[1]}</h3><p>{x[2]}</p><ArrowUpRight/></article></Reveal>)}</div><div className="toolkit"><span>TOOLS & SKILLS</span>{profile.tools.map(t=><b key={t}>{t}</b>)}</div></section>
-<section id="projects" className="section work"><div className="section-head">{label('03','SELECTED WORK')}<small>03 — 06</small></div><div className="section-intro"><Reveal><h2>A few things<br/><i>made with intent.</i></h2></Reveal><p>SELECTED BRAND EXPERIENCE<br/>GRAPHIC DESIGN / DIGITAL / MOTION</p></div><div className="project-grid">{projects.map((p,i)=><Reveal key={p.title} delay={i%2*.08}><button className="project-card" onClick={()=>setModal(i)}><div className="project-image"><img src={p.image} alt={p.title} loading="lazy"/><span className="project-open"><ArrowUpRight/></span><small>0{i+1}</small></div><div className="project-caption"><div><h3>{p.title}</h3><p>{p.category}</p></div><span>VIEW DETAILS ↗</span></div></button></Reveal>)}</div></section>
-<div className="client-strip"><span>GOOD WORK IS A TEAM SPORT</span><div className="marquee"><div>{[...clients,...clients].map((c,i)=><b key={i}>{c}<i>✳</i></b>)}</div></div></div>
-<section id="experience" className="section expertise"><div className="section-head">{label('04','THE JOURNEY')}<small>04 — 06</small></div><div className="section-intro"><Reveal><h2>Built on curiosity.<br/><i>Driven by craft.</i></h2></Reveal><p>EXPERIENCE ACROSS DESIGN,<br/>CONTENT AND BRAND CAMPAIGNS.</p></div><div className="timeline">{experience.map((e,i)=><Reveal key={e.company}><article className="timeline-item"><span>{e.period}</span><div><h3>{e.title}</h3><h4>{e.company}</h4><p>{e.details}</p></div><b>0{i+1}</b></article></Reveal>)}</div></section>
-<section id="contact" className="section contact"><div className="section-head">{label('05','LET’S MAKE SOMETHING')}<small>05 — 06</small></div><Reveal><h2>Have a good<br/>project in <i>mind?</i></h2></Reveal><div className="contact-bottom"><p>For design, video editing or a creative collaboration — let’s talk and make it happen.</p><a href={`mailto:${profile.email}`}>LET’S CONNECT <ArrowUpRight/></a></div><div className="contact-details"><a href={`mailto:${profile.email}`}><Mail/>{profile.email}</a><a href={`tel:${profile.phone}`}><Phone/>{profile.phone}</a><span><MapPin/>{profile.location}</span></div><footer><a className="brand" href="#home"><span>SD</span><b>SUBHAJIT DAS</b></a><p>© {new Date().getFullYear()} SUBHAJIT DAS · MADE WITH INTENTION</p><a href="#home">BACK TO TOP ↑</a></footer></section>
-</main>
-<AnimatePresence>{modal!==null&&<motion.div className="modal-backdrop" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onClick={()=>setModal(null)}><motion.div className="project-modal" initial={{y:35}} animate={{y:0}} exit={{y:25}} onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={()=>setModal(null)}><X/></button><img src={projects[modal].image} alt={projects[modal].title}/><div><small>SELECTED WORK / 0{modal+1}</small><h3>{projects[modal].title}</h3><p>{projects[modal].description}</p><span>{projects[modal].category}</span></div></motion.div></motion.div>}</AnimatePresence></div>}
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import { MotionConfig } from 'framer-motion';
+import { initSmoothScroll, ScrollTrigger } from './lib/scroll';
+import Loader from './components/Loader';
+import Nav from './components/Nav';
+import PullCord from './components/PullCord';
+import Hero from './components/Hero';
+
+// Below-the-fold sections are split into their own chunk.
+const Below = lazy(() => import('./components/Below'));
+
+export default function App() {
+  const [ready, setReady] = useState(false);
+  const done = useCallback(() => setReady(true), []);
+
+  useEffect(() => initSmoothScroll(), []);
+  useEffect(() => {
+    if (ready) window.setTimeout(() => ScrollTrigger.refresh(), 300);
+  }, [ready]);
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <Loader onDone={done} />
+      <PullCord />
+      <Nav ready={ready} />
+      <main id="main">
+        <Hero ready={ready} />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Below />
+        </Suspense>
+      </main>
+      <div className="grain" aria-hidden="true" />
+    </MotionConfig>
+  );
+}
