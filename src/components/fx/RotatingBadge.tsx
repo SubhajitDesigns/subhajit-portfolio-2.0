@@ -2,7 +2,7 @@ import { motion, useAnimationFrame, useMotionValue, useReducedMotion, useScroll,
 import { ArrowDown } from 'lucide-react';
 import { scrollToId } from '../../lib/scroll';
 
-const TEXT = 'Full-Stack Developer • AI & ML • Open to work • ';
+const TEXT = 'Creative Analyst • AI & Visual Design • Open to work • ';
 
 /** Circular text badge that spins — faster while you scroll, reversing with scroll direction. */
 export default function RotatingBadge({ ready }: { ready: boolean }) {
