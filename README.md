@@ -1,15 +1,17 @@
-# Subhajit Das — Portfolio Redesign
+# Subhajit Das — Creative Analyst & Visual Designer
 
-A separate redesign workspace for the Subhajit portfolio. The original portfolio repository is not modified.
+A responsive portfolio redesign built with React, TypeScript, Vite and Framer Motion. The visual direction uses a deep burgundy / wine palette with rose accents, animated hero typography, responsive navigation, reveal transitions, project detail overlays, and a dark/light colour toggle.
 
-## Preview
-This is a static HTML/CSS/JavaScript site. Open `index.html` locally or enable GitHub Pages in repository Settings → Pages → Deploy from branch → `main` → `/ (root)`.
+## Sections
+Home · About · Expertise · My Work · Experience · Contact
 
-## Current design direction
-- Deep burgundy palette with rose/red accents
-- Home, About, Expertise, My Work, Experience and Contact
-- Responsive desktop and mobile navigation
-- Portfolio artwork currently references image assets from the original public portfolio repository
+## Run locally
+```bash
+npm install
+npm run dev
+```
 
-## Next refinement
-Replace the temporary hero artwork with the approved portrait, verify every linked portfolio asset, add detailed project case studies, and confirm the correct email/social contact links before publishing.
+## Publish on GitHub Pages
+The repository includes a GitHub Actions deployment workflow. In the repository, open **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**, and save. The workflow then builds and deploys the site on pushes to `main`.
+
+The portfolio's project thumbnails currently reference image files in the original public portfolio repository. The original repository itself is not modified by this redesign.
