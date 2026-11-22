@@ -4,8 +4,8 @@
  */
 
 export const profile = {
-  fullName: 'Dasari Venkata Ratna Sri Sushmita',
-  name: 'Subhajit',
+  fullName: 'Subhajit Das',
+  name: 'Subhajit Das',
   first: 'Subhajit',
   email: 'sushmitadasari17@gmail.com',
   location: 'Surampalem, Andhra Pradesh',
@@ -23,7 +23,7 @@ export const profile = {
     alt: 'Portrait of Sushmita Dasari',
   },
   /** Rotating hero designations — each one is backed by the resume. */
-  roles: ['Full-Stack Developer', 'AI & ML Engineer in the making', 'Java Developer', 'Problem Solver'],
+  roles: ['Graphic Designer', 'Creative Analyst', 'Motion Graphics Designer', 'Video Editor'],
   availability: 'Open to opportunities',
   interests: ['System Design', 'Cloud Computing (AWS)', 'Machine Learning'],
 };
