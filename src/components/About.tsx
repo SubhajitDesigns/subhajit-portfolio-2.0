@@ -6,7 +6,7 @@ import SectionLabel from './ui/SectionLabel';
 import Reveal from './ui/Reveal';
 
 const STATEMENT =
-  'Hi, I'm Subhajit Das — a Creative Analyst, Graphic Designer, and Video Editor with 7+ years of experience turning ideas into impactful visual experiences. I create engaging visual content, build brand identities, develop social media campaigns, and produce videos that help brands communicate and connect with their audiences. Having worked with 50+ brands, I've delivered over 8,000 visual assets and 2,000+ videos. I thrive in fast-paced creative environments, balancing multiple projects and daily deadlines while maintaining quality, consistency, and a strong creative vision.';
+  "Hi, I'm Subhajit Das — a Creative Analyst, Graphic Designer, and Video Editor with 7+ years of experience turning ideas into impactful visual experiences. Having worked with 50+ brands, I've delivered over 8,000 visual assets and 2,000+ videos.";
 
 /** Oversized statement whose words light up as you scroll past — like a lamp warming up. */
 function ScrubStatement() {
@@ -30,7 +30,7 @@ function ScrubStatement() {
     return () => ctx.revert();
   }, [reduce]);
   return (
-    <p ref={ref} className="text-[clamp(1.9rem,4.6vw,4.4rem)] leading-[1.06] font-medium tracking-[-0.045em]" aria-label={STATEMENT}>
+    <p ref={ref} className="text-[clamp(1.7rem,3.8vw,3.8rem)] leading-[1.08] font-medium tracking-[-0.04em]" aria-label={STATEMENT}>
       {STATEMENT.split(' ').map((w, i) => (
         <span key={i} data-w aria-hidden="true" className={/50\+|8,000|2,000\+/.test(w) ? 'font-serif font-normal tracking-[-0.02em] italic' : ''}>
           {w}{' '}
