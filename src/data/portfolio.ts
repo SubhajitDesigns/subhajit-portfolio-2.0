@@ -14,7 +14,7 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/sushmita-dasari-227a40284/',
     github: 'https://github.com/Sushmitadasari',
   },
-  resume: '/assets/Subhajit_Das_Resume.pdf',
+  resume: '/subhajit-portfolio-redesign/assets/Subhajit_Das_Resume.pdf',
   portrait: {
     src: 'https://raw.githubusercontent.com/Sushmitadasari/theme_changing_portfolio/main/public/assets/portrait-720.webp',
     srcSet: 'https://raw.githubusercontent.com/Sushmitadasari/theme_changing_portfolio/main/public/assets/portrait-420.webp 420w, /assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w',
