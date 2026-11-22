@@ -60,10 +60,19 @@ export default function Expertise() {
     <section
       id="expertise"
       className="relative isolate overflow-hidden px-4 py-28 md:px-8 md:py-44"
-      style={{ background: 'radial-gradient(circle at 68% 38%, rgba(109,16,11,0.52) 0%, rgba(53,7,5,0.36) 27%, rgba(22,2,2,0.94) 58%, #0b0303 100%)' }}
+      style={{ background: '#070101' }}
       aria-labelledby="expertise-title"
     >
-      <div className="mb-16 grid gap-8 md:mb-24 md:grid-cols-12">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[43%] z-0 h-[min(620px,90vw)] w-[min(620px,90vw)] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(185,20,34,0.68) 0%, rgba(115,12,22,0.38) 44%, rgba(35,4,8,0) 74%)',
+          filter: 'blur(72px)',
+          opacity: 0.95,
+        }}
+      />
+      <div className="relative z-10 mb-16 grid gap-8 md:mb-24 md:grid-cols-12">
         <div className="md:col-span-4">
           <SectionLabel index="02">Expertise</SectionLabel>
         </div>
@@ -81,12 +90,12 @@ export default function Expertise() {
         </div>
       </div>
 
-      <Reveal className="-mx-4 mb-20 md:-mx-8 md:mb-28">
+      <Reveal className="relative z-10 -mx-4 mb-20 md:-mx-8 md:mb-28">
         <TechOrbit rings={ORBITS} />
         <p className="mt-2 text-center font-mono text-[10px] tracking-[0.22em] text-faint uppercase">Scroll or drag to turn me · {ALL_SKILLS.length} skills in orbit</p>
       </Reveal>
 
-      <div className="grid gap-12 md:grid-cols-12 md:gap-6">
+      <div className="relative z-10 grid gap-12 md:grid-cols-12 md:gap-6">
         <div role="tablist" aria-label="Skill categories" aria-orientation="vertical" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 md:col-span-5 md:mx-0 md:block md:overflow-visible md:px-0 md:pb-0">
           {skillCategories.map((c) => {
             const on = c.id === active;
