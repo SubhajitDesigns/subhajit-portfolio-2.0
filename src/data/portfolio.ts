@@ -29,10 +29,10 @@ export const profile = {
 };
 
 export const stats = [
-  { value: 9.1, decimals: 2, suffix: '', label: 'CGPA, B.Tech AI & ML' },
-  { value: 850, decimals: 0, suffix: '+', label: 'DSA problems solved' },
-  { value: 16, decimals: 0, suffix: '', label: 'Industry certifications' },
-  { value: 1, decimals: 0, suffix: ' yr', label: 'Full-stack training' },
+  { value: 7, decimals: 0, suffix: '+', label: 'Years of experience' },
+  { value: 50, decimals: 0, suffix: '+', label: 'Brands' },
+  { value: 2, decimals: 0, suffix: '', label: 'Industry certifications' },
+  { value: 2000, decimals: 0, suffix: '+', label: 'Videos' },
 ];
 
 export const education = [
