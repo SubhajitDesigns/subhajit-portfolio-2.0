@@ -28,7 +28,10 @@ export default function HeroVideo({ play }: { play: boolean }) {
   const showPortrait = reduce || failed;
 
   return (
-    <div className={`hero-film relative mx-auto h-full w-fit ${ended || showPortrait ? 'is-idle' : ''}`}>
+    <div
+      className={`hero-film relative mx-auto h-full w-fit ${ended || showPortrait ? 'is-idle' : ''}`}
+      style={{ transform: 'scale(1.16)', transformOrigin: '50% 100%' }}
+    >
       <div aria-hidden="true" className="hero-film__pool" />
       {showPortrait ? (
         <img
