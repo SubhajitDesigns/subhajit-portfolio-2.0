@@ -32,7 +32,7 @@ export const stats = [
   { value: 7, decimals: 0, suffix: '+', label: 'Years of experience' },
   { value: 50, decimals: 0, suffix: '+', label: 'Brands' },
   { value: 2, decimals: 0, suffix: '', label: 'Industry certifications' },
-  { value: 2000, decimals: 0, suffix: '+', label: 'Videos' },
+  { value: 2000, decimals: 0, suffix: '+', label: 'Videos edited' },
 ];
 
 export const education = [
