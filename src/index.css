@@ -223,7 +223,8 @@ html.lenis body {
 
 /* dark: overhead theatre spotlight, rim light, chiaroscuro falloff */
 :root[data-theme='dark'] .hero-film__media {
-  filter: brightness(0.9) contrast(1.12) saturate(0.92) drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.55)) drop-shadow(0 -3px 10px rgba(255, 255, 255, 0.1));
+  /* Soft burgundy ambient glow only — no white rim or outline. */
+  filter: brightness(0.9) contrast(1.12) saturate(0.98) drop-shadow(0 0 22px rgba(150, 12, 28, 0.18));
 }
 :root[data-theme='dark'] .hero-film__pool {
   opacity: 1;
@@ -260,7 +261,8 @@ html.lenis body {
   filter: drop-shadow(0 30px 40px rgba(20, 20, 20, 0.14));
 }
 :root[data-theme='dark'] .spin-figure canvas {
-  filter: brightness(0.92) contrast(1.1) drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.5)) drop-shadow(0 -2px 8px rgba(255, 255, 255, 0.1));
+  /* Soft burgundy ambient glow only — no white rim or outline. */
+  filter: brightness(0.92) contrast(1.1) drop-shadow(0 0 22px rgba(150, 12, 28, 0.18));
 }
 .orbit-path {
   fill: none;
