@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { prefersReducedMotion } from '../../lib/theme';
 
 /**
- * Sushmita stands at the centre of three tilted, gyroscope-like orbits of her skills.
+ * Subhajit stands at the centre of three tilted, gyroscope-like orbits of his skills.
  *
  * — She faces you by default. Scrolling turns her (an 80-frame turntable cut from video);
  *   when scrolling stops she eases back round to face front.
@@ -13,7 +13,7 @@ import { prefersReducedMotion } from '../../lib/theme';
  * in every browser. Drag or arrow keys spin her too.
  */
 
-const SPRITE = { src: '/assets/spin-sprite.webp', frames: 80, cols: 10, fw: 300, fh: 830 };
+const SPRITE = { src: '/assets/spin-sprite.webp', frames: 80, cols: 10, rows: 8 };
 const PERSPECTIVE = 1500;
 
 type Ring = {
@@ -63,6 +63,8 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
     let raf = 0;
     let last = performance.now();
     let frame = -1;
+    let frameW = 300;
+    let frameH = 830;
     let W = 0,
       H = 0,
       figH = 0,
@@ -82,10 +84,10 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
       frame = f;
       const c = canvas.current!;
       c.dataset.frame = String(f); // which of the 80 angles is showing (0 = facing front)
-      const { fw, fh, cols } = SPRITE;
+      const { cols } = SPRITE;
       ctx.globalCompositeOperation = 'source-over';
       ctx.clearRect(0, 0, c.width, c.height);
-      ctx.drawImage(sprite, (f % cols) * fw, Math.floor(f / cols) * fh, fw, fh, 0, 0, c.width, c.height);
+      ctx.drawImage(sprite, (f % cols) * frameW, Math.floor(f / cols) * frameH, frameW, frameH, 0, 0, c.width, c.height);
       const [r, g, b] = bgRgb();
       const dark = document.documentElement.dataset.theme !== 'light';
       const grad = ctx.createLinearGradient(0, 0, 0, c.height);
@@ -98,7 +100,12 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
       ctx.globalCompositeOperation = 'source-over';
     };
     sprite.onload = () => {
+      frameW = sprite.naturalWidth / SPRITE.cols;
+      frameH = sprite.naturalHeight / SPRITE.rows;
+      canvas.current!.width = Math.round(frameW);
+      canvas.current!.height = Math.round(frameH);
       spriteReady = true;
+      layout();
       paintFigure(true);
       figureWrap.current?.classList.add('is-ready');
     };
@@ -108,7 +115,7 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
       W = st.clientWidth;
       H = st.clientHeight;
       figH = H * 0.94;
-      figW = figH * (SPRITE.fw / SPRITE.fh);
+      figW = figH * (frameW / frameH);
       figTop = H - figH;
       Rmax = Math.min(W * (W < 640 ? 0.47 : 0.4), figH * 0.62);
       const fw = figureWrap.current!;
@@ -310,7 +317,7 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
       ref={stage}
       tabIndex={0}
       role="img"
-      aria-label={`Sushmita at the centre of three orbits of her skills: ${groups.flat().join(', ')}. Scroll, drag or use the arrow keys to turn her.`}
+      aria-label={`Subhajit at the centre of three orbits of his skills: ${groups.flat().join(', ')}. Scroll, drag or use the arrow keys to turn him.`}
       data-cursor="pull"
       data-cursor-label="Spin"
       className="orbit-stage relative h-[78svh] max-h-[760px] min-h-[520px] cursor-grab touch-pan-y overflow-hidden select-none active:cursor-grabbing md:h-[94svh] md:max-h-[980px] md:min-h-[640px]"
@@ -318,7 +325,7 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
       <div aria-hidden="true" className="orbit-floor" />
       <svg ref={backSvg} aria-hidden="true" className="absolute inset-0 z-[5] h-full w-full" />
       <div ref={figureWrap} className="spin-figure absolute z-10" aria-hidden="true">
-        <canvas ref={canvas} width={SPRITE.fw} height={SPRITE.fh} className="block h-full w-full" />
+        <canvas ref={canvas} width={300} height={830} className="block h-full w-full" />
       </div>
       <svg ref={frontSvg} aria-hidden="true" className="pointer-events-none absolute inset-0 z-[29] h-full w-full" />
       {flat.map((it, i) => (
