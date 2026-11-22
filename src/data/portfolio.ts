@@ -8,7 +8,7 @@ export const profile = {
   name: 'Subhajit Das',
   first: 'Subhajit',
   email: 'sushmitadasari17@gmail.com',
-  location: 'Surampalem, Andhra Pradesh',
+  location: 'Kolkata, India',
   timezone: 'Asia/Kolkata',
   links: {
     linkedin: 'https://www.linkedin.com/in/sushmita-dasari-227a40284/',
