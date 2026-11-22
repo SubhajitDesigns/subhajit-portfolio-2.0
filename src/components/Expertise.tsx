@@ -57,7 +57,12 @@ export default function Expertise() {
   const cat = skillCategories.find((c) => c.id === active)!;
 
   return (
-    <section id="expertise" className="relative px-4 py-28 md:px-8 md:py-44" aria-labelledby="expertise-title">
+    <section
+      id="expertise"
+      className="relative isolate overflow-hidden px-4 py-28 md:px-8 md:py-44"
+      style={{ background: 'radial-gradient(circle at 68% 38%, rgba(109,16,11,0.52) 0%, rgba(53,7,5,0.36) 27%, rgba(22,2,2,0.94) 58%, #0b0303 100%)' }}
+      aria-labelledby="expertise-title"
+    >
       <div className="mb-16 grid gap-8 md:mb-24 md:grid-cols-12">
         <div className="md:col-span-4">
           <SectionLabel index="02">Expertise</SectionLabel>
