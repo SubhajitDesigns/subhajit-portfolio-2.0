@@ -10,7 +10,7 @@ import { useTheme } from '../lib/theme';
 import HeroVideo from './HeroVideo';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const NAME = 'SUSHMITA';
+const NAME = 'SUBHAJIT';
 
 function RotatingRole({ start }: { start: boolean }) {
   const [i, setI] = useState(0);
