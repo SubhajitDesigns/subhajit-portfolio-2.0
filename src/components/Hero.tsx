@@ -209,10 +209,10 @@ export default function Hero({ ready }: { ready: boolean }) {
           <motion.div {...fadeIn(0.9)} className="mt-8 flex flex-wrap items-center gap-3">
             <Magnetic>
               <a
-                href="#projects"
+                href="#my-work-gallery"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToId('projects');
+                  scrollToId('my-work-gallery');
                 }}
                 className="group inline-flex items-center gap-3 rounded-full bg-fg px-6 py-3.5 text-sm font-medium text-bg"
               >
