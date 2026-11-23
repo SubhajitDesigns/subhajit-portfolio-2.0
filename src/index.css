@@ -295,15 +295,3 @@ html.lenis body {
   background: radial-gradient(closest-side, color-mix(in oklab, var(--fg) 14%, transparent), transparent);
   filter: blur(6px);
 }
-
-
-/* Mobile performance: avoid expensive fixed backgrounds, film grain and idle effects. */
-@media (max-width: 767px), (pointer: coarse) {
-  :root[data-theme='dark'] body { background-attachment: scroll; }
-  .grain { display: none; }
-  .hero-film.is-idle .hero-film__media { animation: none; }
-  .hero-film__media { filter: none !important; transition: none; }
-  .hero-film__pool { display: none; }
-  .orbit-floor { filter: none; }
-  .orbit-comet { filter: none; }
-}
