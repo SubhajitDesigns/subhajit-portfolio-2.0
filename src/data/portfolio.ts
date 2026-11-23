@@ -7,12 +7,12 @@ export const profile = {
   fullName: 'Subhajit Das',
   name: 'Subhajit Das',
   first: 'Subhajit',
-  email: 'sushmitadasari17@gmail.com',
+  email: 'myselfsubhajitdas@gmail.com',
   location: 'Kolkata, India',
   timezone: 'Asia/Kolkata',
   links: {
-    linkedin: 'https://www.linkedin.com/in/sushmita-dasari-227a40284/',
-    github: 'https://github.com/Sushmitadasari',
+    instagram: 'https://www.instagram.com/subhajit_personal/',
+    github: 'https://github.com/SubhajitDesigns',
   },
   resume: '/subhajit-portfolio-redesign/assets/Subhajit_Das_Resume.pdf',
   portrait: {
