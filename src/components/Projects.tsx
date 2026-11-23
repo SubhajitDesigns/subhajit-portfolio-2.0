@@ -246,6 +246,34 @@ const sourceImages = [
     "title": "PROJECT 04",
     "kind": "35 / DESIGN",
     "hue": 218
+  },
+  {
+    "file": "my-work-36.webp",
+    "alt": "Exotic rice bowls campaign design",
+    "title": "EXOTIC BOWLS",
+    "kind": "36 / FOOD CAMPAIGN",
+    "hue": 235
+  },
+  {
+    "file": "my-work-37.webp",
+    "alt": "Hotel M Grand chicken lollipop robot campaign design",
+    "title": "CHICKEN LOLLIPOP",
+    "kind": "37 / RESTAURANT",
+    "hue": 252
+  },
+  {
+    "file": "my-work-38.webp",
+    "alt": "Super delicious pizza promotional design",
+    "title": "PIZZA PROMO",
+    "kind": "38 / FOOD CAMPAIGN",
+    "hue": 269
+  },
+  {
+    "file": "my-work-39.webp",
+    "alt": "Restaurant website promotional design",
+    "title": "RESTAURANT WEBSITE",
+    "kind": "39 / WEB DESIGN",
+    "hue": 286
   }
 ] as const;
 const imageBase = 'https://raw.githubusercontent.com/SubhajitDesigns/subhajitdesigns.github.io/main/';
