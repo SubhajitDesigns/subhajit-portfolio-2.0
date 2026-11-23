@@ -1,33 +1,7 @@
-/* Original My Work animated coverflow gallery, adapted to the redesign theme. */
-.my-work-gallery {
-  position: relative;
-  z-index: 11;
-  width: 100%;
-  min-height: auto;
-  padding: clamp(2.5rem, 5vh, 4rem) 0 clamp(1.5rem, 3vh, 2.5rem);
-  display: block;
-  overflow: hidden;
-  isolation: isolate;
-  background: linear-gradient(180deg, #080506, #100709 58%, #080506);
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-.my-work-gallery::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse at 50% 42%, rgba(145,22,34,.2), transparent 55%), radial-gradient(ellipse at 0% 88%, rgba(100,12,22,.16), transparent 35%), radial-gradient(ellipse at 100% 82%, rgba(100,12,22,.15), transparent 34%);
-}
-.my-work-inner { width: 100%; margin: auto; }
-.my-work-heading { width: min(88vw, 720px); margin: 0 auto .25rem; text-align: center; }
-.my-work-heading p:first-child { margin: 0 0 1rem; color: #ff7777; font-size: .72rem; font-weight: 700; letter-spacing: .2em; }
-.my-work-heading h2 { margin: 0; color: #f7f4f5; font-size: clamp(2.8rem, 7vw, 5.8rem); font-weight: 800; line-height: .95; letter-spacing: -.06em; text-transform: uppercase; }
-.my-work-heading h2 span { color: #ff4d4d; }
-.my-work-heading p:last-child { max-width: 520px; margin: 1rem auto 0; color: rgba(244,232,234,.62); font-size: clamp(.9rem, 1.4vw, 1.05rem); line-height: 1.65; }
-.coverflow { display: grid; justify-items: center; gap: .25rem; width: 100%; font-family: inherit; }
-.coverflow-view { display: grid; place-items: center; width: calc(100% - clamp(28px, 4vw, 56px)); margin-inline: auto; height: clamp(320px, 40vw, 480px); perspective: 1400px; outline: none; }
-.coverflow-view:focus-visible { outline: 2px solid #ff6a6a; outline-offset: -8px; }
+/* Gallery-only styling. The Projects section keeps the site's original theme and layout. */
+.coverflow { display: grid; justify-items: center; gap: .25rem; width: 100%; font-family: inherit; padding-top: 1rem; }
+.coverflow-view { display: grid; place-items: center; width: calc(100% - clamp(28px, 4vw, 56px)); margin-inline: auto; height: 100%; min-height: 320px; perspective: 1400px; outline: none; }
+.coverflow-view:focus-visible { outline: 2px solid rgba(255,255,255,.55); outline-offset: -8px; }
 .coverflow-track { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; pointer-events: none; }
 .cover-card {
   --cover-step: clamp(100px, 16vw, 230px);
@@ -35,20 +9,19 @@
   position: absolute; top: 50%; left: 50%; display: flex; flex-direction: column; align-items: center;
   width: max-content; max-width: min(25vw, 340px); height: max-content; overflow: hidden; padding: 0;
   border: 1px solid rgba(255,255,255,.18); border-radius: 14px; color: #fff; background: #10090a;
-  box-shadow: 0 22px 50px rgba(0,0,0,.5), 0 0 32px rgba(255,65,65,.12); pointer-events: auto;
+  box-shadow: 0 22px 50px rgba(0,0,0,.5); pointer-events: auto;
   transform: translate(-50%, -50%) translateX(calc(var(--o) * var(--cover-step) + var(--sign) * var(--cover-nudge))) translateZ(calc(var(--abs) * -72px)) rotateY(calc(var(--sign) * -52deg));
   transition: transform 1.2s cubic-bezier(.22,.72,.23,1), opacity 1s ease, filter 1s ease, border-color .5s ease;
   filter: brightness(calc(1 - var(--abs) * .11)); opacity: clamp(0, calc(2.2 - var(--abs) * .72), 1); will-change: transform, opacity;
 }
-.cover-card[aria-current="true"] { border-color: rgba(255,112,112,.85); box-shadow: 0 25px 60px rgba(0,0,0,.58), 0 0 34px rgba(255,65,65,.18); }
+.cover-card[aria-current="true"] { border-color: rgba(255,255,255,.55); box-shadow: 0 25px 60px rgba(0,0,0,.58); }
 .cover-card.is-far { opacity: 0; pointer-events: none; }
 .cover-card img { display: block; width: auto; height: auto; max-width: min(25vw, 340px); max-height: min(48vh, 440px); object-fit: contain; border-radius: 12px 12px 0 0; }
 .cover-card-title { display: block; width: 100%; padding: 10px 14px 12px; color: #fff; background: rgba(8,5,6,.96); font-size: clamp(.72rem, 1.1vw, .9rem); font-weight: 750; letter-spacing: .07em; line-height: 1.2; text-align: left; white-space: nowrap; }
-.cover-card-title small { display: block; margin-bottom: .45em; color: #ffc0c0; font-size: .68em; font-weight: 650; letter-spacing: .15em; }
-.coverflow-caption { min-height: 1.3em; color: rgba(255,239,240,.78); font-size: .82rem; font-weight: 650; letter-spacing: .15em; text-align: center; }
+.cover-card-title small { display: block; margin-bottom: .45em; color: rgba(255,255,255,.7); font-size: .68em; font-weight: 650; letter-spacing: .15em; }
+.coverflow-caption { min-height: 1.3em; color: inherit; opacity: .7; font-size: .82rem; font-weight: 650; letter-spacing: .15em; text-align: center; }
 @media(max-width:700px) {
-  .my-work-gallery { min-height: auto; padding: 2.5rem 0 1.5rem; }
-  .coverflow-view { height: clamp(300px, 80vw, 420px); }
+  .coverflow-view { min-height: 300px; }
   .cover-card { --cover-step: calc((100vw - clamp(28px, 7vw, 40px) - clamp(190px, 44vw, 260px)) / 2); --cover-nudge: 0px; max-width: min(68vw, 270px); }
   .cover-card img { max-width: min(68vw, 270px); max-height: min(48vh, 360px); }
   .cover-card-title { padding: 9px 11px 10px; font-size: .74rem; }
