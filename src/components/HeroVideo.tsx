@@ -13,6 +13,7 @@ const PORTRAIT = 'https://raw.githubusercontent.com/SubhajitDesigns/subhajitdesi
 export default function HeroVideo({ play }: { play: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const reduce = useReducedMotion();
+  const [mobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px), (pointer: coarse)').matches);
   const [ended, setEnded] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -25,7 +26,9 @@ export default function HeroVideo({ play }: { play: boolean }) {
     playback?.catch(() => setFailed(true));
   }, [play, reduce, failed]);
 
-  const showPortrait = reduce || failed;
+  // The transparent hero movie is reserved for desktop; phones use the still portrait
+  // to avoid downloading and decoding a large video during the initial page load.
+  const showPortrait = mobile || reduce || failed;
 
   return (
     <div
@@ -52,7 +55,7 @@ export default function HeroVideo({ play }: { play: boolean }) {
           className="hero-film__media block h-full w-auto max-w-none select-none object-contain"
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           disablePictureInPicture
           onEnded={() => setEnded(true)}
           onError={() => setFailed(true)}
