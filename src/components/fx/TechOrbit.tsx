@@ -48,6 +48,10 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
 
   useEffect(() => {
     const reduced = prefersReducedMotion();
+    const touchDevice = window.matchMedia('(pointer: coarse)').matches;
+    const pathSegments = touchDevice ? 64 : 96;
+    const frameInterval = touchDevice ? 1000 / 30 : 0;
+    let lastRenderAt = 0;
     const st = stage.current!;
     const ctx = canvas.current!.getContext('2d')!;
 
@@ -167,8 +171,8 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
         let dB = '';
         let dF = '';
         let prevFront: boolean | null = null;
-        for (let i = 0; i <= 96; i++) {
-          const p = project(ring, (i / 96) * 360);
+        for (let i = 0; i <= pathSegments; i++) {
+          const p = project(ring, (i / pathSegments) * 360);
           const front = p.z >= 0;
           const seg = `${prevFront === front ? 'L' : 'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`;
           if (front) dF += seg;
@@ -208,6 +212,11 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
     };
 
     const loop = (t: number) => {
+      if (frameInterval && t - lastRenderAt < frameInterval) {
+        raf = visible ? requestAnimationFrame(loop) : 0;
+        return;
+      }
+      lastRenderAt = t;
       const dt = Math.min(0.05, (t - last) / 1000);
       last = t;
       // she settles back to face front once the scrolling stops
