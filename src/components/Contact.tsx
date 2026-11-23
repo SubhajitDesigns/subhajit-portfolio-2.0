@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import { ArrowUp, ArrowUpRight, Check, Copy, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Check, Copy, Download, Github, Instagram, Mail, MessageCircle } from 'lucide-react';
 import { profile } from '../data/portfolio';
 import { scrollToId } from '../lib/scroll';
 import SectionLabel from './ui/SectionLabel';
@@ -53,8 +53,8 @@ function BackToTop() {
 }
 
 const links = [
-  { label: 'LinkedIn', href: profile.links.linkedin, icon: Linkedin, note: 'Connect' },
-  { label: 'GitHub', href: profile.links.github, icon: Github, note: '@Sushmitadasari' },
+  { label: 'Instagram', href: profile.links.instagram, icon: Instagram, note: '@subhajit_personal' },
+  { label: 'GitHub', href: profile.links.github, icon: Github, note: '@SubhajitDesigns' },
   { label: 'Email', href: `mailto:${profile.email}`, icon: Mail, note: 'Write to me' },
   { label: 'Résumé', href: profile.resume, icon: Download, note: 'PDF', download: true },
 ];
@@ -73,7 +73,7 @@ export default function Contact() {
         <div className="md:col-span-7">
           <Reveal>
             <p className="max-w-[40ch] text-muted">
-              Internships, full-time roles, collaborations or a good engineering conversation — my inbox is open.
+              Design projects, full-time opportunities, and creative collaborations — let's connect.
             </p>
             <Magnetic strength={0.15} className="mt-6 max-w-full">
               <a
@@ -88,10 +88,10 @@ export default function Contact() {
               <CopyEmail />
               <Magnetic>
                 <a
-                  href={`mailto:${profile.email}?subject=${encodeURIComponent("Hello Sushmita — let's work together")}`}
+                  href="https://wa.me/917679147589"
                   className="group inline-flex items-center gap-2 rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
                 >
-                  Start a conversation
+                  Chat on WhatsApp
                   <ArrowUpRight size={14} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </Magnetic>
