@@ -106,10 +106,11 @@ export default function DriftWall({
           gap: var(--dw-gap);
           transform: translateZ(calc((var(--col) - 2) * var(--dw-depth) * .12));
           animation: drift-wall-scroll ${speed}s linear infinite;
-          animation-delay: calc(var(--col) * -${speed / columnCount}s * .22);
+          animation-delay: var(--dw-delay);
           will-change: transform;
         }
         .drift-wall__column:nth-child(even) { margin-top: calc(var(--col) * var(--dw-gap) * .7); }
+        .drift-wall__column > a { display: block; width: 100%; }
         .drift-wall__tile {
           position: relative;
           display: grid;
@@ -165,7 +166,7 @@ export default function DriftWall({
           <div
             className="drift-wall__column"
             key={columnIndex}
-            style={{ '--col': columnIndex } as CSSProperties}
+            style={{ '--col': columnIndex, '--dw-delay': `${-(columnIndex * speed / columnCount * .22)}s` } as CSSProperties}
           >
             {repeatedItems.map((item, itemIndex) => {
               const content = (
