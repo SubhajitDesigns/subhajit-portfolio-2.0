@@ -30,7 +30,7 @@ export default function ClientLogos() {
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-muted">A few of the brands I've had the pleasure of working with.</p>
       </div>
-      <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_13%,black_87%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_13%,black_87%,transparent_100%)]" aria-label="Client logos">
+      <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.025)_4%,rgba(0,0,0,0.10)_8%,rgba(0,0,0,0.28)_13%,rgba(0,0,0,0.62)_18%,black_24%,black_76%,rgba(0,0,0,0.62)_82%,rgba(0,0,0,0.28)_87%,rgba(0,0,0,0.10)_92%,rgba(0,0,0,0.025)_96%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.025)_4%,rgba(0,0,0,0.10)_8%,rgba(0,0,0,0.28)_13%,rgba(0,0,0,0.62)_18%,black_24%,black_76%,rgba(0,0,0,0.62)_82%,rgba(0,0,0,0.28)_87%,rgba(0,0,0,0.10)_92%,rgba(0,0,0,0.025)_96%,transparent_100%)]" aria-label="Client logos">
         <div className="flex w-max items-center" style={{ animation: reduceMotion ? 'none' : 'client-logo-marquee 48s linear infinite' }}>
           {[...clientLogos, ...clientLogos].map((logo, index) => (
             <div key={`${logo.alt}-${index}`} aria-hidden={index >= clientLogos.length} className="mx-2 flex h-20 w-[190px] shrink-0 items-center justify-center overflow-visible rounded-xl border border-black/5 bg-[#f7f6f2] p-2.5 shadow-sm md:mx-3 md:h-24 md:w-[230px] md:p-3">
