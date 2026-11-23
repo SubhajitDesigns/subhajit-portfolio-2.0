@@ -74,6 +74,7 @@ export default function DriftWall({
         '--dw-depth': `${depth}px`,
         '--dw-lift': `${lift}px`,
         '--dw-parallax': parallax,
+        '--dw-variance': variance,
         '--dw-grayscale': grayscale ? '1' : '0',
       } as CSSProperties}
       aria-label="Selected visual work gallery"
@@ -109,7 +110,7 @@ export default function DriftWall({
           animation-delay: var(--dw-delay);
           will-change: transform;
         }
-        .drift-wall__column:nth-child(even) { margin-top: calc(var(--col) * var(--dw-gap) * .7); }
+        .drift-wall__column:nth-child(even) { margin-top: calc(var(--col) * var(--dw-gap) * (0.35 + var(--dw-variance) * .7)); }
         .drift-wall__column > a { display: block; width: 100%; }
         .drift-wall__tile {
           position: relative;
