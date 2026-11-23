@@ -44,7 +44,7 @@ const DriftWall = ({
   grayscale = false,
   overlayColor = 'transparent',
   className = '',
-  style
+  style = {}
 }) => {
   const containerRef = useRef(null);
   const planeRef = useRef(null);
