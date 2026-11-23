@@ -5,7 +5,6 @@ const prototypeUrl =
   'https://embed.figma.com/proto/zLy1K2P8M9Fr7EhkzVScLv/Movie-Poster-Manupulation?scaling=scale-down&content-scaling=fixed&page-id=0%3A1&node-id=10-53&embed-host=share&hide-ui=1';
 
 export default function FeaturedProject() {
-  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 700px), (pointer: coarse)').matches;
   return (
     <section
       id="featured-project"
@@ -55,15 +54,12 @@ export default function FeaturedProject() {
 
       <div className="featured-project__visual">
         <div className="featured-project__frame">
-          {isMobile ? (
-            <a href={prototypeUrl.replace('embed.figma.com/proto/', 'www.figma.com/proto/').replace('&embed-host=share&hide-ui=1', '')} target="_blank" rel="noreferrer" className="flex h-full min-h-[280px] flex-col items-center justify-center gap-3 bg-[#10090a] p-6 text-center text-white">
-              <span className="text-xs tracking-[.2em] text-[#ff7777]">INTERACTIVE PROJECT</span>
-              <strong className="text-2xl">Explore the poster</strong>
-              <span className="text-sm text-white/60">Open the interactive prototype</span>
-            </a>
-          ) : (
-            <iframe title="Interactive movie poster manipulation prototype" src={prototypeUrl} allowFullScreen loading="lazy" />
-          )}
+          <iframe
+            title="Interactive movie poster manipulation prototype"
+            src={prototypeUrl}
+            allowFullScreen
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
