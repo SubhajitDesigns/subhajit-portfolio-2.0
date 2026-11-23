@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import SectionLabel from './ui/SectionLabel';
+import SplitText from './ui/SplitText';
 import './Projects.css';
 
 const sourceImages = [
@@ -311,7 +313,7 @@ export default function Projects() {
                   <article
                     className={`cover-card ${visible ? '' : 'is-far'}`}
                     key={item.file}
-                    aria-current={index === projectIndex ? "true" : undefined}
+                    aria-current={index === projectIndex ? 'true' : undefined}
                     style={{
                       '--o': offset,
                       '--abs': distance,
