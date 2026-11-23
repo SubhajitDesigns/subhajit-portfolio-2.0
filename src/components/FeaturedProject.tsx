@@ -5,7 +5,20 @@ const prototypeUrl =
 
 export default function FeaturedProject() {
   return (
-    <section id="featured-project" className="featured-project" aria-label="Interactive movie poster manipulation prototype">
+    <section
+      id="featured-project"
+      className="featured-project"
+      aria-labelledby="featured-project-title"
+    >
+      <div className="featured-project__content">
+        <p className="featured-project__eyebrow">SELECTED PROJECT</p>
+        <h2 id="featured-project-title">Movie Poster Manipulation</h2>
+        <p className="featured-project__description">
+          An interactive look at the poster transformation, from the original
+          image to the final cinematic artwork.
+        </p>
+      </div>
+
       <div className="featured-project__frame">
         <iframe
           title="Interactive movie poster manipulation prototype"
