@@ -11,21 +11,32 @@ export default function FeaturedProject() {
       aria-labelledby="featured-project-title"
     >
       <div className="featured-project__content">
-        <p className="featured-project__eyebrow">FEATURED CREATIVE WORK</p>
-        <h2 id="featured-project-title">Reality,<br />Reframed.</h2>
-        <p className="featured-project__description">
-          A cinematic poster transformation crafted through detailed photo
-          editing, dramatic light and visual compositing.
-        </p>
-        <div className="featured-project__tools" aria-label="Tools used">
-          <span className="featured-project__tool">
-            <span className="featured-project__app-icon featured-project__app-icon--lr" aria-hidden="true">Lr</span>
-            <span>Lightroom</span>
-          </span>
-          <span className="featured-project__tool">
-            <span className="featured-project__app-icon featured-project__app-icon--ps" aria-hidden="true">Ps</span>
-            <span>Photoshop</span>
-          </span>
+        <div className="featured-project__heading">
+          <p className="featured-project__eyebrow">PHOTO MANIPULATION / 2024</p>
+          <h2 id="featured-project-title" className="featured-project__title">
+            <span>REALITY,</span>
+            <span className="featured-project__title-accent">REIMAGINED<span className="featured-project__period">.</span></span>
+          </h2>
+        </div>
+
+        <div className="featured-project__details">
+          <p className="featured-project__description">
+            Turning an ordinary photograph into a cinematic world through light,
+            color and detailed compositing.
+          </p>
+          <div className="featured-project__tools">
+            <p className="featured-project__tools-label">CRAFTED WITH</p>
+            <div className="featured-project__tool-list" aria-label="Tools used: Adobe Lightroom and Adobe Photoshop">
+              <span className="featured-project__tool">
+                <span className="featured-project__app-icon featured-project__app-icon--lr" aria-hidden="true">Lr</span>
+                <span>Lightroom</span>
+              </span>
+              <span className="featured-project__tool">
+                <span className="featured-project__app-icon featured-project__app-icon--ps" aria-hidden="true">Ps</span>
+                <span>Photoshop</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
