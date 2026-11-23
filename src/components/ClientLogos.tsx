@@ -36,7 +36,7 @@ export default function ClientLogos() {
             <div key={`${logo.alt}-${index}`} aria-hidden={index >= clientLogos.length} className="mx-2 flex h-20 w-[190px] shrink-0 items-center justify-center overflow-visible rounded-xl border border-black/5 bg-[#f7f6f2] p-2.5 shadow-sm md:mx-3 md:h-24 md:w-[230px] md:p-3">
               {logo.alt === "30 Sundays" ? (
               <div className="flex h-full w-full items-center justify-center overflow-hidden">
-                <img src={logo.src} alt={index < clientLogos.length ? logo.alt : ''} className="h-[230px] w-[230px] max-w-none object-cover transition-transform duration-300" style={{ transform: 'scale(1.85)' }} loading="lazy" decoding="async" />
+                <img src={logo.src} alt={index < clientLogos.length ? logo.alt : ''} className="h-[230px] w-[230px] max-w-none object-cover transition-transform duration-300" style={{ transform: 'scale(1.35)' }} loading="lazy" decoding="async" />
               </div>
             ) : (
               <img src={logo.src} alt={index < clientLogos.length ? logo.alt : ''} className={`${logo.crop ? "h-full w-[115%] max-w-none object-cover" : "max-h-full max-w-full object-contain"} transition-transform duration-300`} style={{ transform: `scale(${logo.scale ?? 1})` }} loading="lazy" decoding="async" />
