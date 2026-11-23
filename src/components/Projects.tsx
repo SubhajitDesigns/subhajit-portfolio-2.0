@@ -31,8 +31,8 @@ export default function Projects() {
           tileWidth={240}
           tileHeight={220}
           gap={4}
-          columnGap={24}
-          rowGap={3}
+          columnGap={28}
+          rowGap={0}
           tilt={16}
           turn={-14}
           perspective={1200}
