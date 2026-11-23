@@ -8,7 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 let lenis: Lenis | null = null;
 
 export function initSmoothScroll() {
-  if (prefersReducedMotion() || lenis) return () => {};
+  // Keep native touch scrolling on phones; Lenis + GSAP ticker can make
+  // long animated pages feel heavy on mid-range mobile devices.
+  if (prefersReducedMotion() || window.matchMedia('(pointer: coarse)').matches || lenis) return () => {};
   lenis = new Lenis({ duration: 1.15, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), touchMultiplier: 1.4 });
   lenis.on('scroll', ScrollTrigger.update);
   const tick = (time: number) => lenis?.raf(time * 1000);
