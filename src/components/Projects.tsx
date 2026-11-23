@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import SectionLabel from './ui/SectionLabel';
+import { useEffect } from 'react';
 import './Projects.css';
 
 const sourceImages = [
@@ -252,83 +251,112 @@ const sourceImages = [
 const imageBase = 'https://raw.githubusercontent.com/SubhajitDesigns/subhajitdesigns.github.io/main/';
 
 export default function Projects() {
-  const [active, setActive] = useState(sourceImages.length + Math.floor(sourceImages.length / 2));
-  const [wide, setWide] = useState(false);
-
   useEffect(() => {
-    const query = window.matchMedia('(hover: hover) and (pointer: fine)');
-    const update = () => setWide(query.matches || window.innerWidth >= 700);
-    update();
-    query.addEventListener?.('change', update);
-    window.addEventListener('resize', update);
+    const section = document.getElementById('my-work-gallery');
+    const root = section?.querySelector('.coverflow');
+    const track = root?.querySelector('.track');
+    if (!section || !root || !track) return;
+
+    const originals = Array.from(track.querySelectorAll<HTMLElement>(':scope > .cover-card'));
+    const count = originals.length;
+    if (!count) return;
+
+    for (let cycle = 0; cycle < 2; cycle += 1) {
+      originals.forEach((card) => {
+        const clone = card.cloneNode(true) as HTMLElement;
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+    }
+
+    const items = Array.from(track.querySelectorAll<HTMLElement>('.cover-card'));
+    const caption = root.querySelector<HTMLOutputElement>('.coverflow-caption');
+    const view = root.querySelector<HTMLElement>('.view');
+    if (!caption || !view) return;
+
+    let active = count + Math.floor(count / 2);
+    const pendingWraps: number[] = [];
+
+    function layout() {
+      const hasDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const maxOffset = hasDesktopPointer || window.innerWidth >= 700 ? 4 : 1;
+      items.forEach((card, index) => {
+        const offset = index - active;
+        const distance = Math.abs(offset);
+        card.style.setProperty('--o', String(offset));
+        card.style.setProperty('--abs', String(distance));
+        card.style.setProperty('--sign', String(Math.sign(offset)));
+        card.style.zIndex = String(items.length - distance);
+        card.classList.toggle('is-far', distance > maxOffset);
+        if (maxOffset === 4 && distance <= 4) {
+          card.style.opacity = String(Math.max(.68, 1 - distance * .08));
+          card.style.filter = 'brightness(' + Math.max(.72, 1 - distance * .07) + ')';
+        } else {
+          card.style.opacity = '';
+          card.style.filter = '';
+        }
+        card.setAttribute('aria-current', String(index === active));
+      });
+
+      const projectIndex = ((active - count) % count + count) % count;
+      caption.textContent = String(projectIndex + 1).padStart(2, '0') + ' / ' +
+        String(count).padStart(2, '0') + ' — ' + originals[projectIndex].dataset.title;
+    }
+
+    function advance(direction = 1) {
+      active += direction;
+      layout();
+      if (direction > 0 && active >= count * 2) {
+        pendingWraps.push(window.setTimeout(() => {
+          active -= count;
+          layout();
+        }, 1250));
+      } else if (direction < 0 && active < count) {
+        pendingWraps.push(window.setTimeout(() => {
+          active += count;
+          layout();
+        }, 1250));
+      }
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); advance(1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); advance(-1); }
+    };
+    const timer = window.setInterval(() => advance(1), 3600);
+    view.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', layout);
+    layout();
+
     return () => {
-      query.removeEventListener?.('change', update);
-      window.removeEventListener('resize', update);
+      window.clearInterval(timer);
+      window.removeEventListener('resize', layout);
+      view.removeEventListener('keydown', onKeyDown);
+      pendingWraps.forEach(window.clearTimeout);
+      items.slice(count).forEach((card) => card.remove());
     };
   }, []);
 
-  useEffect(() => {
-    const timer = window.setInterval(() => setActive((value) => value + 1), 3600);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const count = sourceImages.length;
-  const projectIndex = ((active - count) % count + count) % count;
-  const advance = (direction: number) => setActive((value) => value + direction);
-  const maxOffset = wide ? 4 : 1;
-
   return (
-    <section id="projects" className="relative overflow-hidden px-4 py-24 md:px-8 md:py-32" aria-labelledby="projects-title">
-      <header className="mx-auto mb-10 flex max-w-[720px] flex-col items-center text-center md:mb-12">
-        <SectionLabel index="03">Selected projects</SectionLabel>
-        <h2 id="projects-title" className="mt-6 text-[clamp(2.8rem,7vw,5.8rem)] leading-[0.95] font-extrabold tracking-[-0.06em] uppercase">
-          MY <span className="text-accent">WORK</span>
-        </h2>
-        <p className="mt-4 max-w-[520px] text-sm leading-relaxed text-muted">
-          A closer look at design, branding, product campaigns, and visual ideas.
-        </p>
-      </header>
-
-      <div className="relative left-1/2 h-[520px] w-screen -translate-x-1/2 overflow-hidden md:h-[620px]">
-        <div className="coverflow h-full" aria-label="Automatic selected work coverflow">
-          <div
-            className="coverflow-view"
-            tabIndex={0}
-            aria-label="Auto-moving coverflow. Use left and right arrow keys to browse"
-            onKeyDown={(event) => {
-              if (event.key === 'ArrowLeft') { event.preventDefault(); advance(1); }
-              if (event.key === 'ArrowRight') { event.preventDefault(); advance(-1); }
-            }}
-          >
-            <div className="coverflow-track">
-              {sourceImages.map((item, index) => {
-                const offset = index - projectIndex;
-                const distance = Math.abs(offset);
-                const visible = distance <= maxOffset;
-                return (
-                  <article
-                    className={`cover-card ${visible ? '' : 'is-far'}`}
-                    key={item.file}
-                    aria-current={index === projectIndex ? 'true' : undefined}
-                    style={{
-                      '--o': offset,
-                      '--abs': distance,
-                      '--sign': Math.sign(offset),
-                      zIndex: count - distance,
-                      opacity: visible ? (wide ? Math.max(.68, 1 - distance * .08) : undefined) : 0,
-                      filter: visible && wide ? `brightness(${Math.max(.72, 1 - distance * .07)})` : undefined,
-                    } as React.CSSProperties}
-                  >
-                    <img src={imageBase + encodeURI(item.file)} alt={item.alt} loading={index < 5 ? 'eager' : 'lazy'} />
-                    <span className="cover-card-title"><small>{item.kind}</small>{item.title}</span>
-                  </article>
-                );
-              })}
+    <section id="my-work-gallery" aria-labelledby="my-work-title">
+      <div className="my-work-inner">
+        <header className="my-work-heading">
+          <p>SELECTED PROJECTS</p>
+          <h2 id="my-work-title">MY <span>WORK</span></h2>
+          <p>A closer look at design, branding, product campaigns, and visual ideas.</p>
+        </header>
+        <div className="coverflow" aria-label="Automatic selected work coverflow">
+          <div className="view" tabIndex={0} aria-label="Auto-moving coverflow. Use left and right arrow keys to browse">
+            <div className="track">
+              {sourceImages.map((item) => (
+                <article className="cover-card" data-title={item.title} key={item.file} style={{ '--hue': item.hue } as React.CSSProperties}>
+                  <img src={imageBase + encodeURI(item.file)} alt={item.alt} loading="lazy" />
+                  <span className="cover-card-title"><small>{item.kind}</small>{item.title}</span>
+                </article>
+              ))}
             </div>
           </div>
-          <output className="coverflow-caption" aria-live="polite">
-            {String(projectIndex + 1).padStart(2, '0')} / {String(count).padStart(2, '0')} — {sourceImages[projectIndex].title}
-          </output>
+          <output className="coverflow-caption" aria-live="polite">18 / 35 — SOCIAL MEDIA</output>
         </div>
       </div>
     </section>
