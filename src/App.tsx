@@ -18,8 +18,10 @@ export default function App() {
     if (ready) window.setTimeout(() => ScrollTrigger.refresh(), 300);
   }, [ready]);
 
+  const [mobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 760px), (pointer: coarse)').matches);
+
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion={mobile ? 'always' : 'user'}>
       <a href="#main" className="skip-link">
         Skip to content
       </a>
