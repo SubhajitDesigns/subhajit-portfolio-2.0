@@ -283,7 +283,7 @@ export default function Projects() {
   useEffect(() => {
     const section = document.getElementById('my-work-gallery');
     const root = section?.querySelector('.coverflow');
-    const track = root?.querySelector('.track');
+    const track = root?.querySelector<HTMLElement>('.track');
     if (!section || !root || !track) return;
 
     const originals = Array.from(track.querySelectorAll<HTMLElement>(':scope > .cover-card'));
