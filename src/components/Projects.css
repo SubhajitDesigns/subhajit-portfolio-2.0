@@ -16,7 +16,7 @@
 }
 .cover-card[aria-current="true"] { border-color: rgba(255,255,255,.55); box-shadow: 0 25px 60px rgba(0,0,0,.58); }
 .cover-card.is-far { opacity: 0; pointer-events: none; }
-.cover-card img { display: block; width: auto; height: auto; max-width: min(25vw, 340px); max-height: min(54vh, 480px); object-fit: contain; object-position: center; border-radius: 12px 12px 0 0; }
+.cover-card img { display: block; width: auto; height: auto; max-width: min(25vw, 340px); max-height: min(48vh, 440px); object-fit: contain; object-position: center; border-radius: 12px 12px 0 0; }
 .cover-card-title { display: block; width: 100%; padding: 10px 14px 12px; color: #fff; background: rgba(8,5,6,.96); font-size: clamp(.72rem, 1.1vw, .9rem); font-weight: 750; letter-spacing: .07em; line-height: 1.2; text-align: left; white-space: nowrap; }
 .cover-card-title small { display: block; margin-bottom: .45em; color: rgba(255,255,255,.7); font-size: .68em; font-weight: 650; letter-spacing: .15em; }
 .coverflow-caption { min-height: 1.3em; color: inherit; opacity: .7; font-size: .82rem; font-weight: 650; letter-spacing: .15em; text-align: center; }
