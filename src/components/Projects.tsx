@@ -281,9 +281,6 @@ const localAssetBase = `${import.meta.env.BASE_URL}assets/`;
 
 export default function Projects() {
   useEffect(() => {
-    // Phones use a native horizontal gallery; don't create 3 copies of 39 cards or run an autoplay timer.
-    if (window.matchMedia('(max-width: 760px), (pointer: coarse)').matches) return;
-
     const section = document.getElementById('my-work-gallery');
     const root = section?.querySelector('.coverflow');
     const track = root?.querySelector<HTMLElement>('.track');
@@ -387,9 +384,9 @@ export default function Projects() {
         <div className="coverflow" aria-label="Automatic selected work coverflow">
           <div className="view" tabIndex={0} aria-label="Auto-moving coverflow. Use left and right arrow keys to browse">
             <div className="track">
-              {sourceImages.slice(0, window.matchMedia('(max-width: 760px), (pointer: coarse)').matches ? 12 : sourceImages.length).map((item) => (
+              {sourceImages.map((item) => (
                 <article className="cover-card" data-title={item.title} key={item.file} style={{ '--hue': item.hue } as React.CSSProperties}>
-                  <img src={item.file.startsWith('my-work-') ? localAssetBase + item.file : imageBase + encodeURI(item.file)} alt={item.alt} loading="lazy" decoding="async" />
+                  <img src={item.file.startsWith('my-work-') ? localAssetBase + item.file : imageBase + encodeURI(item.file)} alt={item.alt} loading="lazy" />
                   <span className="cover-card-title"><small>{item.kind}</small>{item.title}</span>
                 </article>
               ))}
