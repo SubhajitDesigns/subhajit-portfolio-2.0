@@ -27,6 +27,8 @@ const DriftWall = ({
   tileWidth = 200,
   tileHeight = 220,
   gap = 18,
+  columnGap = gap,
+  rowGap = gap,
   radius = 14,
   tilt = 16,
   turn = -14,
@@ -79,13 +81,13 @@ const DriftWall = ({
   }, [items, columns]);
 
   const columnMeta = useMemo(() => {
-    const unit = tileHeight + gap;
+    const unit = tileHeight + rowGap;
     return columnItems.map(col => {
       const copyHeight = Math.max(unit, col.length * unit);
       const copies = Math.max(2, Math.ceil((containerHeight * 1.6) / copyHeight) + 1);
       return { copyHeight, copies };
     });
-  }, [columnItems, tileHeight, gap, containerHeight]);
+  }, [columnItems, tileHeight, rowGap, containerHeight]);
 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
@@ -114,7 +116,7 @@ const DriftWall = ({
       const plane = planeRef.current;
       if (!plane) return;
       plane.style.transform =
-        `translate(-50%, -50%) scale(1.06) ` +
+        `translate(-50%, -50%) scale(1.12) ` +
         `rotateX(${tilt + py}deg) rotateY(${turn + px}deg) rotateZ(${roll}deg) ` +
         `translateZ(${-depth}px)`;
     },
@@ -212,9 +214,11 @@ const DriftWall = ({
 
   const cssVars = useMemo(
     () => ({
-      '--dw-tile-w': `calc((100cqw / ${columns}) - ${gap}px)`,
+      '--dw-tile-w': `calc((100cqw / ${columns}) - ${columnGap}px)`,
       '--dw-tile-h': `${tileHeight}px`,
       '--dw-gap': `${gap}px`,
+      '--dw-col-gap': `${columnGap}px`,
+      '--dw-row-gap': `${rowGap}px`,
       '--dw-radius': `${radius}px`,
       '--dw-perspective': `${perspective}px`,
       '--dw-lift': `${lift}px`,
@@ -224,7 +228,7 @@ const DriftWall = ({
       '--dw-edge': `${Math.max(0, (1 - fade) * 100)}%`,
       ...style
     }),
-    [tileWidth, tileHeight, gap, radius, perspective, lift, dim, grayscale, overlayColor, fade, style]
+    [tileWidth, tileHeight, gap, columnGap, rowGap, radius, perspective, lift, dim, grayscale, overlayColor, fade, style]
   );
 
   const renderTile = (item, id, colIndex) => {
