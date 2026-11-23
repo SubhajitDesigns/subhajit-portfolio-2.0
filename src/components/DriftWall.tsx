@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import './DriftWall.css';
 
-const DEFAULT_ITEMS = Array.from({ length: 15 }, (_, i) => {
+const DEFAULT_ITEMS: Array<{ image: string; title: string; href?: string }> = Array.from({ length: 15 }, (_, i) => {
   const ids = [1015, 1025, 1039, 1043, 1044, 1050, 1062, 1069, 1074, 1080, 1084, 106, 110, 133, 164];
   return {
     image: `https://picsum.photos/id/${ids[i % ids.length]}/600/400`,
