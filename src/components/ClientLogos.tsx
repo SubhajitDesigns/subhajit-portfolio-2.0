@@ -10,7 +10,7 @@ const clientLogos: { src: string; alt: string; scale?: number; crop?: boolean }[
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/7e2823f7-1c9c-4953-903b-6a319ae0af39.png', alt: 'Ice Axe Media', scale: 1.32 },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/9e53ef2e-e71d-45d5-a228-52b6ad7c0eee.svg', alt: 'Rapsap', scale: 0.9 },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/fae1d268-a3e9-4eb0-9a65-01a51c5fbcb6.webp', alt: 'ACE Academy by LinguaAce' },
-  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/a4062b29-ce45-4b3c-85af-22fe148c4c74.jpg', alt: 'Crooze', scale: 1.3 },
+  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/a4062b29-ce45-4b3c-85af-22fe148c4c74.jpg', alt: 'Crooze', scale: 1.38 },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/d60e63be-f7e1-494f-94b8-8b86b112c0e7.png', alt: 'Uvi Health', scale: 1.58 },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/6d630228-fc37-4862-90e4-c942d9efbd59.png', alt: 'Veda Inn Corbett' },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/34005eac-7885-47e3-b5d0-117d92a27641.png', alt: 'NerdyBird Wealth Advisory LLP', scale: 1.38 },
@@ -30,13 +30,11 @@ export default function ClientLogos() {
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-muted">A few of the brands I've had the pleasure of working with.</p>
       </div>
-      <div className="relative overflow-hidden" aria-label="Client logos">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-bg via-bg/90 to-transparent md:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-bg via-bg/90 to-transparent md:w-40" />
+      <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_13%,black_87%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_13%,black_87%,transparent_100%)]" aria-label="Client logos">
         <div className="flex w-max items-center" style={{ animation: reduceMotion ? 'none' : 'client-logo-marquee 48s linear infinite' }}>
           {[...clientLogos, ...clientLogos].map((logo, index) => (
-            <div key={`${logo.alt}-${index}`} aria-hidden={index >= clientLogos.length} className="mx-2 flex h-24 w-[210px] shrink-0 items-center justify-center overflow-visible rounded-xl border border-black/5 bg-[#f7f6f2] p-3 shadow-sm md:mx-3 md:h-28 md:w-[250px] md:p-4">
-              <img src={logo.src} alt={index < clientLogos.length ? logo.alt : ''} className={`${logo.crop ? "h-full w-[115%] max-w-none object-cover" : "max-h-full max-w-full object-contain"} transition-transform duration-300`} style={{ transform: `scale(${(logo.scale ?? 1) * 0.95})` }} loading="lazy" decoding="async" />
+            <div key={`${logo.alt}-${index}`} aria-hidden={index >= clientLogos.length} className="mx-2 flex h-20 w-[190px] shrink-0 items-center justify-center overflow-visible rounded-xl border border-black/5 bg-[#f7f6f2] p-2.5 shadow-sm md:mx-3 md:h-24 md:w-[230px] md:p-3">
+              <img src={logo.src} alt={index < clientLogos.length ? logo.alt : ''} className={`${logo.crop ? "h-full w-[115%] max-w-none object-cover" : "max-h-full max-w-full object-contain"} transition-transform duration-300`} style={{ transform: `scale(${logo.scale ?? 1})` }} loading="lazy" decoding="async" />
             </div>
           ))}
         </div>
