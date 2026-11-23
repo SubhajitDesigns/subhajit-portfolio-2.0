@@ -28,21 +28,21 @@ export default function Projects() {
         <DriftWall
           items={galleryItems}
           columns={5}
-          tileWidth={200}
+          tileWidth={240}
           tileHeight={220}
-          gap={18}
+          gap={8}
           tilt={16}
           turn={-14}
           perspective={1200}
           depth={120}
-          speed={42}
+          speed={145}
           direction="up"
           variance={0.45}
           parallax={0.6}
           lift={64}
           fade={0.6}
-          dim={0.55}
-          overlayColor="#060010"
+          dim={1}
+          overlayColor="transparent"
           radius={14}
           roll={0}
           pauseOnHover={false}
