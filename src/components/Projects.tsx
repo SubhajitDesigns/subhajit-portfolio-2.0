@@ -332,19 +332,26 @@ export default function Projects() {
         String(count).padStart(2, '0') + ' — ' + originals[projectIndex].dataset.title;
     }
 
+    function rebaseLoopPosition(amount: number) {
+      // Swap to the identical neighboring copy with transitions disabled.
+      // This keeps the visible cards in place instead of animating them
+      // across the whole gallery during the infinite-loop reset.
+      root!.classList.add('is-rebasing');
+      active += amount;
+      layout();
+      void track!.offsetHeight;
+      window.requestAnimationFrame(() => {
+        root!.classList.remove('is-rebasing');
+      });
+    }
+
     function advance(direction = 1) {
       active += direction;
       layout();
       if (direction > 0 && active >= count * 2) {
-        pendingWraps.push(window.setTimeout(() => {
-          active -= count;
-          layout();
-        }, 1250));
+        pendingWraps.push(window.setTimeout(() => rebaseLoopPosition(-count), 1250));
       } else if (direction < 0 && active < count) {
-        pendingWraps.push(window.setTimeout(() => {
-          active += count;
-          layout();
-        }, 1250));
+        pendingWraps.push(window.setTimeout(() => rebaseLoopPosition(count), 1250));
       }
     }
 
