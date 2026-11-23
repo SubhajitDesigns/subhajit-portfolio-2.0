@@ -12,7 +12,10 @@ export default function DotField() {
     const canvas = ref.current!;
     const ctx = canvas.getContext('2d')!;
     const reduced = prefersReducedMotion();
-    const GAP = 30;
+    const touchDevice = window.matchMedia('(pointer: coarse)').matches;
+    const GAP = touchDevice ? 36 : 30;
+    const frameInterval = touchDevice ? 1000 / 30 : 0;
+    let lastDrawAt = 0;
     let w = 0,
       h = 0,
       dpr = 1,
@@ -29,7 +32,7 @@ export default function DotField() {
 
     const resize = () => {
       const r = canvas.parentElement!.getBoundingClientRect();
-      dpr = Math.min(2, window.devicePixelRatio || 1);
+      dpr = Math.min(touchDevice ? 1.35 : 2, window.devicePixelRatio || 1);
       w = r.width;
       h = r.height;
       canvas.width = w * dpr;
@@ -64,7 +67,10 @@ export default function DotField() {
     };
 
     const loop = (t: number) => {
-      draw(t);
+      if (!frameInterval || t - lastDrawAt >= frameInterval) {
+        draw(t);
+        lastDrawAt = t;
+      }
       raf = visible && !reduced ? requestAnimationFrame(loop) : 0;
     };
     const start = () => {
