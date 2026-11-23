@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: .04em;
+  gap: 0;
   margin: clamp(1.4rem, 2.6vw, 2rem) 0 0;
   color: #f7f4f2;
   font-family: 'Space Grotesk', 'Inter', sans-serif;
@@ -58,7 +58,7 @@
 .featured-project__tech-line {
   display: block;
   width: 100%;
-  height: clamp(4.2rem, 7.4vw, 6.2rem);
+  height: clamp(4.8rem, 8.6vw, 7.1rem);
   overflow: hidden;
 }
 
@@ -74,7 +74,7 @@
 
 .featured-project__details {
   width: 100%;
-  margin-top: clamp(.8rem, 1.4vw, 1.15rem);
+  margin-top: 0;
 }
 
 .featured-project__description {
@@ -154,7 +154,7 @@
 .featured-project__interaction-hint {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: .7rem;
   min-height: 34px;
   margin-top: .8rem;
@@ -170,23 +170,19 @@
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
-  animation: featured-arrow-slide 1.15s ease-in-out infinite alternate;
 }
 
 .featured-project__typing-text {
   display: inline-block;
-  width: 0;
-  overflow: hidden;
+  width: auto;
+  overflow: visible;
   white-space: nowrap;
-  border-right: 1px solid #ff626c;
   color: rgba(245,238,238,.72);
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: .66rem;
   font-weight: 700;
   letter-spacing: .16em;
   line-height: 1.5;
-  animation: featured-type-loop 3.2s steps(17, end) infinite alternate,
-    featured-caret .75s step-end infinite;
 }
 
 @keyframes featured-type-loop {
@@ -228,7 +224,7 @@
   }
 
   .featured-project__details {
-    margin-top: .8rem;
+    margin-top: 0;
   }
 
   .featured-project__description {
@@ -247,6 +243,6 @@
 
 @media (max-width: 700px) {
   .featured-project__tech-line {
-    height: clamp(3.7rem, 12vw, 4.8rem);
+    height: clamp(4.3rem, 14vw, 5.4rem);
   }
 }
