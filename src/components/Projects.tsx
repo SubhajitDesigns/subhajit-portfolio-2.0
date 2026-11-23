@@ -277,6 +277,7 @@ const sourceImages = [
   }
 ] as const;
 const imageBase = 'https://raw.githubusercontent.com/SubhajitDesigns/subhajitdesigns.github.io/main/';
+const localAssetBase = `${import.meta.env.BASE_URL}assets/`;
 
 export default function Projects() {
   useEffect(() => {
@@ -378,13 +379,13 @@ export default function Projects() {
             <div className="track">
               {sourceImages.map((item) => (
                 <article className="cover-card" data-title={item.title} key={item.file} style={{ '--hue': item.hue } as React.CSSProperties}>
-                  <img src={imageBase + encodeURI(item.file)} alt={item.alt} loading="lazy" />
+                  <img src={item.file.startsWith('my-work-') ? localAssetBase + item.file : imageBase + encodeURI(item.file)} alt={item.alt} loading="lazy" />
                   <span className="cover-card-title"><small>{item.kind}</small>{item.title}</span>
                 </article>
               ))}
             </div>
           </div>
-          <output className="coverflow-caption" aria-live="polite">18 / 35 — SOCIAL MEDIA</output>
+          <output className="coverflow-caption" aria-live="polite">18 / 39 — SOCIAL MEDIA</output>
         </div>
       </div>
     </section>
