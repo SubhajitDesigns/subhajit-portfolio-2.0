@@ -249,9 +249,3 @@
     height: clamp(5.5rem, 17vw, 7rem);
   }
 }
-
-
-@media (max-width: 700px), (pointer: coarse) {
-  .featured-project__frame { aspect-ratio: auto; min-height: 280px; }
-  .featured-project__frame iframe { display: none; }
-}
