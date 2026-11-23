@@ -5,6 +5,7 @@ import { educationHistory, workExperience } from '../data/portfolio';
 import SectionLabel from './ui/SectionLabel';
 import SplitText from './ui/SplitText';
 import Reveal from './ui/Reveal';
+import ClientLogos from './ClientLogos';
 
 export default function Experience() {
   const lineRef = useRef<HTMLOListElement>(null);
@@ -126,6 +127,9 @@ export default function Experience() {
           ))}
         </ul>
       </div>
+
+      {/* Client logos — separate section directly below certifications */}
+      <ClientLogos />
     </section>
   );
 }
