@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import SectionLabel from './ui/SectionLabel';
-import SplitText from './ui/SplitText';
 import './Projects.css';
 
 const sourceImages = [
