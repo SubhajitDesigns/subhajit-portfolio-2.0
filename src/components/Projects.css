@@ -190,6 +190,19 @@
     max-height: min(42svh, 330px);
   }
 }
+/* Match the original site's final desktop-only My Work overrides. */
+@media (min-width: 701px) {
+  #my-work-gallery .cover-card {
+    --cover-step: clamp(65px, 10.5vw, 145px);
+    --cover-nudge: clamp(18px, 2.6vw, 36px);
+    max-width: min(22vw, 300px);
+  }
+  #my-work-gallery .cover-card img {
+    max-width: min(22vw, 300px);
+    max-height: min(42vh, 380px);
+  }
+}
+
 @media (max-width: 420px) {
   #my-work-gallery .cover-card-title {
     padding: 8px;
