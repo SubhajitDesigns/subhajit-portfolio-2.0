@@ -285,7 +285,11 @@
     background: none;
     -webkit-text-fill-color: #ff626c;
   }
-  .featured-project__title-main {\n    -webkit-text-fill-color: #f7f4f2;\n  }\n  .featured-project__title:hover .featured-project__title-accent,\n  .featured-project__title:hover .featured-project__title-main {
+  .featured-project__title-main {
+    -webkit-text-fill-color: #f7f4f2;
+  }
+  .featured-project__title:hover .featured-project__title-accent,
+  .featured-project__title:hover .featured-project__title-main {
     filter: none;
   }
 }
