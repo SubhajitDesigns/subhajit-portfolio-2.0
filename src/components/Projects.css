@@ -216,3 +216,56 @@
 @media (prefers-reduced-motion: reduce) {
   #my-work-gallery .cover-card { transition-duration: .01ms; }
 }
+
+
+/* Touch devices: simple native horizontal gallery, no 3D coverflow transforms. */
+@media (max-width: 760px), (pointer: coarse) {
+  #my-work-gallery .view {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1rem 1rem 1.25rem;
+    perspective: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  #my-work-gallery .track {
+    display: flex;
+    position: static;
+    width: max-content;
+    height: auto;
+    gap: 12px;
+    transform: none !important;
+    transform-style: flat;
+    pointer-events: auto;
+  }
+  #my-work-gallery .cover-card {
+    position: relative;
+    inset: auto;
+    left: auto;
+    top: auto;
+    flex: 0 0 auto;
+    width: min(68vw, 250px);
+    max-width: none;
+    height: auto;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+    scroll-snap-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  }
+  #my-work-gallery .cover-card.is-far { opacity: 1; pointer-events: auto; }
+  #my-work-gallery .cover-card img {
+    width: 100%;
+    max-width: none;
+    max-height: 38svh;
+    height: auto;
+    object-fit: contain;
+  }
+  #my-work-gallery .coverflow-caption { display: none; }
+}
