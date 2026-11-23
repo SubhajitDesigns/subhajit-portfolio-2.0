@@ -11,10 +11,10 @@ const clientLogos: { src: string; alt: string; scale?: number; crop?: boolean }[
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/9e53ef2e-e71d-45d5-a228-52b6ad7c0eee.svg', alt: 'Rapsap', scale: 0.9 },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/fae1d268-a3e9-4eb0-9a65-01a51c5fbcb6.webp', alt: 'ACE Academy by LinguaAce' },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/a4062b29-ce45-4b3c-85af-22fe148c4c74.jpg', alt: 'Crooze', scale: 1.38 },
-  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/d60e63be-f7e1-494f-94b8-8b86b112c0e7.png', alt: 'Uvi Health', scale: 1.58 },
+  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/d60e63be-f7e1-494f-94b8-8b86b112c0e7.png', alt: 'Uvi Health', scale: 1.68 },
   { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/6d630228-fc37-4862-90e4-c942d9efbd59.png', alt: 'Veda Inn Corbett' },
-  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/34005eac-7885-47e3-b5d0-117d92a27641.png', alt: 'NerdyBird Wealth Advisory LLP', scale: 1.38 },
-  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/12a4ae78-e315-41bd-ac7e-c6c6e3f448f2.jpg', alt: 'LOGAS Wholesaler at Your Doorstep', crop: true },
+  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/34005eac-7885-47e3-b5d0-117d92a27641.png', alt: 'NerdyBird Wealth Advisory LLP', scale: 1.25 },
+  { src: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J5wMb6jrWj1Y3i6X8tSPeXaSPn/12a4ae78-e315-41bd-ac7e-c6c6e3f448f2.jpg', alt: 'LOGAS Wholesaler at Your Doorstep', scale: 0.9, crop: true },
 ];
 
 export default function ClientLogos() {
