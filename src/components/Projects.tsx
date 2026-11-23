@@ -300,6 +300,37 @@ export default function Projects() {
                 const distance = Math.abs(offset);
                 const visible = distance <= maxOffset;
                 return (
+    <section id="projects" className="relative overflow-hidden px-4 py-24 md:px-8 md:py-32" aria-labelledby="projects-title">
+      <div className="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
+        <div>
+          <SectionLabel index="03">Visual gallery</SectionLabel>
+          <h2 id="projects-title" className="mt-6 text-[clamp(2rem,4vw,3.6rem)] leading-[0.98] font-medium tracking-[-0.045em]">
+            <SplitText text="A world of" className="block" />
+            <SplitText text="visual stories." delay={0.12} className="block font-serif font-normal tracking-[-0.03em] italic" />
+          </h2>
+        </div>
+        <p className="max-w-[34ch] text-sm leading-relaxed text-muted md:text-right">
+          A moving collection of imagery, moments, and visual inspiration that reflects my creative eye.
+        </p>
+      </div>
+
+      <div className="relative left-1/2 h-[520px] w-screen -translate-x-1/2 overflow-hidden md:h-[620px]">
+        <div className="coverflow" aria-label="Automatic selected work coverflow">
+          <div
+            className="coverflow-view"
+            tabIndex={0}
+            aria-label="Auto-moving coverflow. Use left and right arrow keys to browse"
+            onKeyDown={(event) => {
+              if (event.key === 'ArrowLeft') { event.preventDefault(); advance(1); }
+              if (event.key === 'ArrowRight') { event.preventDefault(); advance(-1); }
+            }}
+          >
+            <div className="coverflow-track">
+              {sourceImages.map((item, index) => {
+                const offset = index - projectIndex;
+                const distance = Math.abs(offset);
+                const visible = distance <= maxOffset;
+                return (
                   <article
                     className={`cover-card ${visible ? '' : 'is-far'}`}
                     key={item.file}
