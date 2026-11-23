@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
-import { certifications, educationHistory, workExperience } from '../data/portfolio';
+import { educationHistory, workExperience } from '../data/portfolio';
 import SectionLabel from './ui/SectionLabel';
 import SplitText from './ui/SplitText';
 import Reveal from './ui/Reveal';
@@ -74,23 +73,61 @@ export default function Experience() {
       {/* Certifications */}
       <div className="mt-20 md:mt-24">
         <div className="mb-6 flex items-baseline justify-between gap-4">
-          <h3 className="font-mono text-[11px] tracking-[0.2em] text-muted uppercase">Certifications · {certifications.length}</h3>
-          <span className="text-xs text-faint">Each links to its credential</span>
+          <h3 className="font-mono text-[11px] tracking-[0.2em] text-muted uppercase">Certifications · 04</h3>
+          <span className="text-xs text-faint">Select a certificate to view it full size</span>
         </div>
-        <ul className="grid gap-px overflow-hidden rounded-[3px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {certifications.map((c, i) => (
-            <Reveal as="li" key={c.name} delay={(i % 4) * 0.04} y={12} className="h-full bg-bg">
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            {
+              image: '/assets/certificates/pixel-institute.jpg',
+              alt: 'Adobe Photoshop CC-Retouching Masterclass certificate from Pixel Institute of Photography',
+              issuer: 'PIXEL INSTITUTE OF PHOTOGRAPHY',
+              name: 'Adobe Photoshop CC-Retouching Masterclass',
+              date: '21 NOVEMBER 2021',
+            },
+            {
+              image: '/assets/certificates/photoshop-training.jpg',
+              alt: 'Ultimate Photoshop Training from Beginners to Pro certificate',
+              issuer: 'PHOTOSHOP TRAINING',
+              name: 'Ultimate Photoshop Training — Beginners to Pro',
+              date: '28 OCTOBER 2020',
+            },
+            {
+              image: '/assets/certificates/adobe-certified.png',
+              alt: 'Adobe Certified Professional certificate in Visual Design using Adobe Photoshop',
+              issuer: 'ADOBE',
+              name: 'Adobe Certified Professional — Visual Design using Photoshop',
+              date: '6 OCTOBER 2021',
+            },
+            {
+              image: '/assets/certificates/linkedin-learning.jpg',
+              alt: 'LinkedIn Learning certificate for Cert Prep Adobe Certified Associate Photoshop',
+              issuer: 'LINKEDIN LEARNING',
+              name: 'Cert Prep: Adobe Certified Associate — Photoshop',
+              date: '7 APRIL 2024',
+            },
+          ].map((certificate, i) => (
+            <Reveal as="li" key={certificate.image} delay={i * 0.04} y={12} className="min-w-0">
               <a
-                href={c.link}
+                href={certificate.image}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex h-full items-start justify-between gap-3 px-4 py-3.5 transition-colors duration-300 hover:bg-fg hover:text-bg"
+                aria-label={`View certificate: ${certificate.name}`}
+                className="group block h-full"
               >
-                <span>
-                  <span className="block font-mono text-[9.5px] tracking-[0.18em] text-muted uppercase transition-colors group-hover:text-bg/60">{c.issuer}</span>
-                  <span className="mt-1 block text-sm leading-snug">{c.name}</span>
-                </span>
-                <ArrowUpRight size={13} className="mt-0.5 shrink-0 opacity-40 transition-all duration-300 group-hover:opacity-100" />
+                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[3px] border border-line bg-white p-2 transition-colors duration-300 group-hover:border-fg">
+                  <img
+                    src={certificate.image}
+                    alt={certificate.alt}
+                    loading="lazy"
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.025]"
+                  />
+                </div>
+                <div className="pt-3">
+                  <span className="block font-mono text-[9px] tracking-[0.16em] text-muted uppercase">{certificate.issuer}</span>
+                  <span className="mt-1.5 block text-sm leading-snug font-medium">{certificate.name}</span>
+                  <span className="mt-2 block font-mono text-[9px] tracking-[0.12em] text-faint">{certificate.date}</span>
+                </div>
               </a>
             </Reveal>
           ))}
