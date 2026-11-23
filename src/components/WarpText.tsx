@@ -310,8 +310,8 @@ const buildTextCanvas = ({ container, width, height, dpr, props }: BuildTextCanv
   };
   applyFont();
 
-  const maxWidth = width * 0.86;
-  const maxHeight = height * 0.78;
+  const maxWidth = width * 0.98;
+  const maxHeight = height * 0.96;
   const widest = Math.max(...lines.map(line => measureLine(ctx, line, letterSpacing)), 1);
   const blockHeight = Math.max(lineHeight * lines.length, 1);
   const fit = Math.min(1, maxWidth / widest, maxHeight / blockHeight);
