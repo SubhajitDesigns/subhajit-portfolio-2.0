@@ -8,7 +8,7 @@
   display: block;
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(180deg, #080506, #100709 58%, #080506);
+  background: transparent;
   border-top: 1px solid rgba(255,255,255,.08);
 }
 #my-work-gallery::before {
@@ -17,10 +17,7 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse at 50% 42%, rgba(145,22,34,.2), transparent 55%),
-    radial-gradient(ellipse at 0% 88%, rgba(100,12,22,.16), transparent 35%),
-    radial-gradient(ellipse at 100% 82%, rgba(100,12,22,.15), transparent 34%);
+  background: none;
 }
 #my-work-gallery .my-work-inner { width: 100%; margin: auto; }
 #my-work-gallery .my-work-heading { width: min(88vw, 720px); margin: 0 auto .25rem; text-align: center; }
@@ -181,7 +178,7 @@
     gap: .35rem;
   }
   #my-work-gallery .view {
-    height: clamp(240px, 68vw, 300px);
+    height: clamp(310px, 92vw, 430px);
   }
   #my-work-gallery .cover-card {
     --cover-step: calc((100vw - clamp(28px, 7vw, 40px) - clamp(190px, 44vw, 260px)) / 2);
