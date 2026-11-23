@@ -306,7 +306,7 @@ export const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'expertise', label: 'Expertise' },
-  { id: 'projects', label: 'Projects' },
+  { id: 'my-work-gallery', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ];
