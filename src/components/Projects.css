@@ -8,7 +8,7 @@
   display: block;
   overflow: hidden;
   isolation: isolate;
-  background: transparent;
+  background: linear-gradient(180deg, #080506, #100709 58%, #080506);
   border-top: 1px solid rgba(255,255,255,.08);
 }
 #my-work-gallery::before {
@@ -17,7 +17,10 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: none;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(145,22,34,.2), transparent 55%),
+    radial-gradient(ellipse at 0% 88%, rgba(100,12,22,.16), transparent 35%),
+    radial-gradient(ellipse at 100% 82%, rgba(100,12,22,.15), transparent 34%);
 }
 #my-work-gallery .my-work-inner { width: 100%; margin: auto; }
 #my-work-gallery .my-work-heading { width: min(88vw, 720px); margin: 0 auto .25rem; text-align: center; }
@@ -162,4 +165,37 @@
 }
 @media(prefers-reduced-motion:reduce) {
   #my-work-gallery .cover-card { transition-duration: .01ms; }
+}
+
+/* Match the original main portfolio's gallery spacing and sizing. */
+@media (max-width: 760px) {
+  #my-work-gallery {
+    min-height: auto;
+    padding: 1.5rem 0 2rem;
+  }
+  #my-work-gallery .my-work-heading {
+    width: min(92vw, 560px);
+    padding-inline: .5rem;
+  }
+  #my-work-gallery .coverflow {
+    gap: .35rem;
+  }
+  #my-work-gallery .view {
+    height: clamp(240px, 68vw, 300px);
+  }
+  #my-work-gallery .cover-card {
+    --cover-step: calc((100vw - clamp(28px, 7vw, 40px) - clamp(190px, 44vw, 260px)) / 2);
+    --cover-nudge: 0px;
+    max-width: min(62vw, 250px);
+  }
+  #my-work-gallery .cover-card img {
+    max-width: min(62vw, 250px);
+    max-height: min(42svh, 330px);
+  }
+}
+@media (max-width: 420px) {
+  #my-work-gallery .cover-card-title {
+    padding: 8px;
+    font-size: .68rem;
+  }
 }
