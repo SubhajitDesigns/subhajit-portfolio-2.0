@@ -1,6 +1,6 @@
-/* Gallery-only styling. The Projects section keeps the site's original theme and layout. */
-.coverflow { display: grid; justify-items: center; gap: .25rem; width: 100%; font-family: inherit; padding-top: 1rem; }
-.coverflow-view { display: grid; place-items: center; width: calc(100% - clamp(28px, 4vw, 56px)); margin-inline: auto; height: 100%; min-height: 320px; perspective: 1400px; outline: none; }
+/* Styles only the gallery cards; section background and typography remain controlled by the original site theme. */
+.coverflow { display: grid; justify-items: center; gap: .25rem; width: 100%; font-family: inherit; }
+.coverflow-view { display: grid; place-items: center; width: calc(100% - clamp(28px, 4vw, 56px)); height: 100%; margin-inline: auto; perspective: 1400px; outline: none; }
 .coverflow-view:focus-visible { outline: 2px solid rgba(255,255,255,.55); outline-offset: -8px; }
 .coverflow-track { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; pointer-events: none; }
 .cover-card {
@@ -21,7 +21,6 @@
 .cover-card-title small { display: block; margin-bottom: .45em; color: rgba(255,255,255,.7); font-size: .68em; font-weight: 650; letter-spacing: .15em; }
 .coverflow-caption { min-height: 1.3em; color: inherit; opacity: .7; font-size: .82rem; font-weight: 650; letter-spacing: .15em; text-align: center; }
 @media(max-width:700px) {
-  .coverflow-view { min-height: 300px; }
   .cover-card { --cover-step: calc((100vw - clamp(28px, 7vw, 40px) - clamp(190px, 44vw, 260px)) / 2); --cover-nudge: 0px; max-width: min(68vw, 270px); }
   .cover-card img { max-width: min(68vw, 270px); max-height: min(48vh, 360px); }
   .cover-card-title { padding: 9px 11px 10px; font-size: .74rem; }
