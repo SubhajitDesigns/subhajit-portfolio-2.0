@@ -6,6 +6,7 @@ import SectionLabel from './ui/SectionLabel';
 import SplitText from './ui/SplitText';
 import Reveal from './ui/Reveal';
 import ClientLogos from './ClientLogos';
+import Testimonials from './Testimonials';
 
 export default function Experience() {
   const lineRef = useRef<HTMLOListElement>(null);
@@ -130,6 +131,7 @@ export default function Experience() {
 
       {/* Client logos — separate section directly below certifications */}
       <ClientLogos />
+      <Testimonials />
     </section>
   );
 }
