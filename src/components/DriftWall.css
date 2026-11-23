@@ -9,20 +9,16 @@
   --dw-tile-w: 200px;
   --dw-tile-h: 132px;
   --dw-gap: 18px;
+  --dw-col-gap: 18px;
+  --dw-row-gap: 18px;
   --dw-radius: 14px;
   --dw-lift: 64px;
   --dw-dim: 0.55;
   --dw-gray: 0;
   --dw-overlay: #060010;
   --dw-edge: 40%;
-  -webkit-mask-image:
-    radial-gradient(ellipse 78% 82% at 50% 46%, #000 var(--dw-edge), transparent 100%),
-    linear-gradient(to top, #000 var(--dw-edge), transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    radial-gradient(ellipse 78% 82% at 50% 46%, #000 var(--dw-edge), transparent 100%),
-    linear-gradient(to top, #000 var(--dw-edge), transparent 100%);
-  mask-composite: intersect;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .drift-wall__plane {
@@ -39,7 +35,7 @@
 
 .drift-wall__col {
   position: relative;
-  width: calc(var(--dw-tile-w) + var(--dw-gap));
+  width: calc(var(--dw-tile-w) + var(--dw-col-gap));
   transform-style: preserve-3d;
 }
 
@@ -54,7 +50,7 @@
   position: relative;
   display: block;
   width: 100%;
-  height: calc(var(--dw-tile-h) + var(--dw-gap));
+  height: calc(var(--dw-tile-h) + var(--dw-row-gap));
   flex: 0 0 auto;
   outline: none;
   transform-style: preserve-3d;
@@ -62,11 +58,12 @@
 
 .drift-wall__inner {
   position: absolute;
-  inset: calc(var(--dw-gap) / 2);
+  inset: calc(var(--dw-row-gap) / 2) calc(var(--dw-col-gap) / 2);
   display: block;
   border-radius: var(--dw-radius);
   overflow: hidden;
   background: transparent;
+  border-radius: var(--dw-radius);
   opacity: 1;
   transform: translateZ(0);
   pointer-events: none;
@@ -81,6 +78,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  border-radius: inherit;
   filter: grayscale(var(--dw-gray)) saturate(1);
   transition: filter 0.42s cubic-bezier(0.22, 1, 0.36, 1);
   user-select: none;
@@ -124,4 +122,26 @@
   .drift-wall__track {
     will-change: auto;
   }
+}
+
+/* Softly dissolve the top and bottom edges into the portfolio background. */
+.drift-wall::before,
+.drift-wall::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 17%;
+  z-index: 5;
+  pointer-events: none;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+.drift-wall::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(7, 1, 1, 0.88), rgba(7, 1, 1, 0));
+}
+.drift-wall::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(7, 1, 1, 0.9), rgba(7, 1, 1, 0));
 }
