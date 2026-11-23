@@ -24,26 +24,26 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className="relative h-[520px] overflow-hidden rounded-[14px] md:h-[620px]">
+      <div className="relative left-1/2 h-[520px] w-screen -translate-x-1/2 overflow-hidden md:h-[620px]">
         <DriftWall
           items={galleryItems}
           columns={5}
           tileWidth={240}
           tileHeight={220}
-          gap={8}
+          gap={4}
           tilt={16}
           turn={-14}
           perspective={1200}
           depth={120}
-          speed={145}
+          speed={42}
           direction="up"
           variance={0.45}
           parallax={0.6}
           lift={64}
-          fade={0.6}
+          fade={0}
           dim={1}
           overlayColor="transparent"
-          radius={14}
+          radius={18}
           roll={0}
           pauseOnHover={false}
           grayscale
