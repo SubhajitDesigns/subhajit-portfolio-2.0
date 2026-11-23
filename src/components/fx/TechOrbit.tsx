@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { prefersReducedMotion } from '../../lib/theme';
 
 /**
@@ -32,6 +32,7 @@ function bgRgb() {
 }
 
 export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
+  const [mobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 760px), (pointer: coarse)').matches);
   const stage = useRef<HTMLDivElement>(null);
   const figureWrap = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -47,6 +48,7 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
   const flat = rings.flatMap((ring, ri) => ring.items.map((name, k) => ({ name, ri, k })));
 
   useEffect(() => {
+    if (mobile) return undefined;
     const reduced = prefersReducedMotion();
     const st = stage.current!;
     const ctx = canvas.current!.getContext('2d')!;
@@ -310,7 +312,15 @@ export default function TechOrbit({ rings: groups }: { rings: string[][] }) {
     };
     // rings are derived from props; re-run only when the skill groups change
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups]);
+  }, [groups, mobile]);
+
+  if (mobile) {
+    return (
+      <div className="mx-auto grid max-w-xl grid-cols-2 gap-2 px-4 py-6 sm:grid-cols-3">
+        {groups.flat().map((name) => <span key={name} className="rounded-full border border-line bg-bg px-3 py-2 text-center text-xs text-muted">{name}</span>)}
+      </div>
+    );
+  }
 
   return (
     <div
