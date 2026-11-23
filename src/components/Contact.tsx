@@ -88,7 +88,9 @@ export default function Contact() {
               <CopyEmail />
               <Magnetic>
                 <a
-                  href="https://wa.me/917679147589"
+                  href="https://api.whatsapp.com/send?phone=917679147589"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
                 >
                   Chat on WhatsApp
