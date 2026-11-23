@@ -82,25 +82,25 @@ export default function Experience() {
         <ul className="grid gap-3 sm:grid-cols-2">
           {[
             {
-              image: '/assets/certificates/pixel-institute.jpg',
+              image: `${import.meta.env.BASE_URL}assets/certificates/pixel-institute.jpg',
               issuer: 'PIXEL INSTITUTE OF PHOTOGRAPHY',
               name: 'Adobe Photoshop CC-Retouching Masterclass',
               date: '21 NOVEMBER 2021',
             },
             {
-              image: '/assets/certificates/photoshop-training.jpg',
+              image: `${import.meta.env.BASE_URL}assets/certificates/photoshop-training.jpg',
               issuer: 'PHOTOSHOP TRAINING',
               name: 'Ultimate Photoshop Training — Beginners to Pro',
               date: '28 OCTOBER 2020',
             },
             {
-              image: '/assets/certificates/adobe-certified.png',
+              image: `${import.meta.env.BASE_URL}assets/certificates/adobe-certified.png',
               issuer: 'ADOBE',
               name: 'Adobe Certified Professional — Visual Design using Photoshop',
               date: '6 OCTOBER 2021',
             },
             {
-              image: '/assets/certificates/linkedin-learning.jpg',
+              image: `${import.meta.env.BASE_URL}assets/certificates/linkedin-learning.jpg',
               issuer: 'LINKEDIN LEARNING',
               name: 'Cert Prep: Adobe Certified Associate — Photoshop',
               date: '7 APRIL 2024',
