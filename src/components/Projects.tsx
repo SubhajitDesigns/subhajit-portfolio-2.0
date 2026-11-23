@@ -293,7 +293,7 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className="relative left-1/2 h-[520px] w-screen -translate-x-1/2 overflow-hidden md:h-[620px]">
+      <div className="relative left-1/2 h-[680px] w-screen -translate-x-1/2 overflow-hidden md:h-[760px]">
         <div className="coverflow h-full" aria-label="Automatic selected work coverflow">
           <div
             className="coverflow-view"
