@@ -26,3 +26,13 @@
   text-align: center;
   white-space: pre-line;
 }
+
+
+/* Lightweight static typography on phones; the WebGL effect is desktop-only. */
+@media (max-width: 767px), (pointer: coarse) {
+  .warp-text__fallback {
+    font-size: clamp(2rem, 9.5vw, 4.5rem) !important;
+    letter-spacing: -0.11em !important;
+    line-height: 0.9 !important;
+  }
+}
