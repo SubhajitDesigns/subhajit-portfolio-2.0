@@ -101,7 +101,7 @@
     border-color .5s ease;
   filter: brightness(calc(1 - var(--abs) * .11));
   opacity: clamp(0, calc(2.2 - var(--abs) * .72), 1);
-  will-change: transform, opacity;
+  /* Avoid promoting every off-screen card to its own GPU layer. */
 }
 /* Instant clone-set swap at the loop boundary; prevents visible reverse/jump. */
 #my-work-gallery .coverflow.is-rebasing .cover-card {
