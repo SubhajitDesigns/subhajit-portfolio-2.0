@@ -69,8 +69,8 @@
   pointer-events: none;
 }
 #my-work-gallery .cover-card {
-  --cover-step: clamp(90px, 8.5vw, 122px);
-  --cover-nudge: clamp(20px, 2vw, 28px);
+  --cover-step: clamp(100px, 16vw, 230px);
+  --cover-nudge: clamp(35px, 4vw, 60px);
   position: absolute;
   top: 50%;
   left: 50%;
