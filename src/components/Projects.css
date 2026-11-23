@@ -1,4 +1,5 @@
-/* Full-width, auto-moving My Work coverflow */
+/* My Work coverflow — layout rules transferred from the original portfolio.
+   The section background stays transparent so it uses the redesign's site-wide background. */
 #my-work-gallery {
   position: relative;
   z-index: 11;
@@ -146,25 +147,8 @@
   text-align: center;
 }
 #my-work-gallery .view:focus-visible { outline: 2px solid #ff6a6a; outline-offset: -8px; }
-@media(max-width:700px) {
-  #my-work-gallery { min-height: auto; padding: 2.5rem 0 1.5rem; }
-  #my-work-gallery .view { height: clamp(300px, 80vw, 420px); }
-  #my-work-gallery .cover-card {
-    --cover-step: calc((100vw - clamp(28px, 7vw, 40px) - clamp(190px, 44vw, 260px)) / 2);
-    --cover-nudge: 0px;
-    max-width: min(68vw, 270px);
-  }
-  #my-work-gallery .cover-card img {
-    max-width: min(68vw, 270px);
-    max-height: min(48vh, 360px);
-  }
-  #my-work-gallery .cover-card-title { padding: 9px 11px 10px; font-size: .74rem; }
-}
-@media(prefers-reduced-motion:reduce) {
-  #my-work-gallery .cover-card { transition-duration: .01ms; }
-}
 
-/* Match the original main portfolio's gallery spacing and sizing. */
+/* Original portfolio's final phone/tablet rules (including later overrides). */
 @media (max-width: 760px) {
   #my-work-gallery {
     min-height: auto;
@@ -173,24 +157,32 @@
   #my-work-gallery .my-work-heading {
     width: min(92vw, 560px);
     padding-inline: .5rem;
+    margin-bottom: .25rem;
   }
-  #my-work-gallery .coverflow {
-    gap: .35rem;
+  #my-work-gallery .my-work-heading h2 {
+    font-size: clamp(2.2rem, 10vw, 3rem);
   }
-  #my-work-gallery .view {
-    height: clamp(310px, 92vw, 430px);
+  #my-work-gallery .my-work-heading p:last-child {
+    margin-top: .65rem;
+    font-size: .85rem;
   }
+  #my-work-gallery .coverflow { gap: .35rem; }
+  #my-work-gallery .view { height: clamp(240px, 68vw, 300px); }
   #my-work-gallery .cover-card {
-    --cover-step: calc((100vw - clamp(28px, 7vw, 40px) - clamp(190px, 44vw, 260px)) / 2);
-    --cover-nudge: 0px;
-    max-width: min(62vw, 250px);
+    max-width: min(56vw, 220px);
+    border-radius: 12px;
   }
   #my-work-gallery .cover-card img {
-    max-width: min(62vw, 250px);
-    max-height: min(42svh, 330px);
+    max-width: min(56vw, 220px);
+    max-height: min(32svh, 230px);
   }
+  #my-work-gallery .coverflow-caption { font-size: .7rem; }
 }
-/* Match the original site's final desktop-only My Work overrides. */
+@media (max-width: 420px) {
+  #my-work-gallery .cover-card-title { padding: 8px; font-size: .68rem; }
+}
+
+/* Original desktop-only sizing: 9-card spread and original edge spacing. */
 @media (min-width: 701px) {
   #my-work-gallery .cover-card {
     --cover-step: clamp(65px, 10.5vw, 145px);
@@ -203,9 +195,19 @@
   }
 }
 
-@media (max-width: 420px) {
-  #my-work-gallery .cover-card-title {
-    padding: 8px;
-    font-size: .68rem;
+/* Preserve the original desktop card scale when browser zoom narrows the viewport. */
+@media (max-width: 700px) and (hover: hover) and (pointer: fine) {
+  #my-work-gallery .cover-card {
+    --cover-step: clamp(70px, 12vw, 165px);
+    --cover-nudge: clamp(20px, 3vw, 42px);
+    max-width: min(22vw, 300px);
   }
+  #my-work-gallery .cover-card img {
+    max-width: min(22vw, 300px);
+    max-height: min(42vh, 380px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #my-work-gallery .cover-card { transition-duration: .01ms; }
 }
