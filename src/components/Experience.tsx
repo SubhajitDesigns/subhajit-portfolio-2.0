@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { certifications, recognitions, timeline } from '../data/portfolio';
+import { certifications, educationHistory, workExperience } from '../data/portfolio';
 import SectionLabel from './ui/SectionLabel';
 import SplitText from './ui/SplitText';
 import Reveal from './ui/Reveal';
@@ -29,7 +29,7 @@ export default function Experience() {
           <ol ref={lineRef} className="relative">
             <span aria-hidden="true" className="absolute top-1 bottom-1 left-[5px] w-px bg-line" />
             <motion.span aria-hidden="true" style={{ scaleY: reduce ? 1 : scaleY }} className="absolute top-1 bottom-1 left-[5px] w-px origin-top bg-fg" />
-            {timeline.map((t, i) => (
+            {workExperience.map((t, i) => (
               <Reveal as="li" key={t.title} delay={i * 0.06} className={`relative pl-8 ${i > 0 ? 'mt-10' : ''}`}>
                 <span aria-hidden="true" className="absolute top-1.5 left-0 h-[11px] w-[11px] rounded-full border border-fg bg-bg" />
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -53,32 +53,21 @@ export default function Experience() {
           </ol>
         </div>
 
-        {/* Recognition */}
+        {/* Education */}
         <div className="lg:col-span-5">
-          <h3 className="mb-6 font-mono text-[11px] tracking-[0.2em] text-muted uppercase">Recognition</h3>
+          <h3 className="mb-6 font-mono text-[11px] tracking-[0.2em] text-muted uppercase">Education</h3>
           <ul className="border-t border-line">
-            {recognitions.map((r, i) => {
-              const Tag = r.link ? 'a' : 'div';
-              return (
-                <Reveal as="li" key={r.title} delay={i * 0.04} y={14}>
-                  <Tag
-                    {...(r.link ? { href: r.link, target: '_blank', rel: 'noreferrer' } : {})}
-                    className="group flex items-start justify-between gap-4 border-b border-line py-4"
-                  >
-                    <span>
-                      <span className="block font-medium tracking-[-0.02em] transition-transform duration-500 group-hover:translate-x-1">{r.title}</span>
-                      <span className="mt-0.5 block text-sm text-muted">
-                        {r.org} — {r.detail}
-                      </span>
-                    </span>
-                    <span className="flex shrink-0 items-center gap-1.5 pt-1 font-mono text-[9.5px] tracking-[0.16em] text-faint uppercase">
-                      {r.kind}
-                      {r.link && <ArrowUpRight size={12} className="text-fg" />}
-                    </span>
-                  </Tag>
-                </Reveal>
-              );
-            })}
+            {educationHistory.map((item, i) => (
+              <Reveal as="li" key={item.qualification} delay={i * 0.04} y={14}>
+                <div className="flex items-start justify-between gap-4 border-b border-line py-4">
+                  <span>
+                    <span className="block font-medium tracking-[-0.02em]">{item.qualification}</span>
+                    <span className="mt-0.5 block text-sm text-muted">{item.institution}</span>
+                  </span>
+                  <span className="shrink-0 pt-1 font-mono text-[9.5px] tracking-[0.12em] text-faint">{item.period}</span>
+                </div>
+              </Reveal>
+            ))}
           </ul>
         </div>
       </div>
