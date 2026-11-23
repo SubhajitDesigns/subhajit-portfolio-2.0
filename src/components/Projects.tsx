@@ -303,7 +303,7 @@ export default function Projects() {
                   <article
                     className={`cover-card ${visible ? '' : 'is-far'}`}
                     key={item.file}
-                    aria-current={String(index === projectIndex)}
+                    aria-current={index === projectIndex ? "true" : undefined}
                     style={{
                       '--o': offset,
                       '--abs': distance,
