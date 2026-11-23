@@ -55,49 +55,24 @@
   animation-delay: .14s;
 }
 
-.featured-project__title-main {
+.featured-project__tech-line {
+  display: block;
+  width: 100%;
+  height: clamp(4.2rem, 7.4vw, 6.2rem);
+  overflow: visible;
+}
+
+.featured-project__tech-line .tech-text {
+  width: 100%;
+  height: 100%;
+}
+
+.featured-project__tech-line--main {
   color: #f7f4f2;
-  background: linear-gradient(105deg, #f7f4f2 0%, #f7f4f2 38%, #ffb9b4 50%, #f7f4f2 62%, #f7f4f2 100%);
-  background-size: 230% 100%;
-  background-position: 100% 0;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: featured-title-in .9s cubic-bezier(.2,.8,.2,1) both,
-    featured-title-sheen 5s ease-in-out 1.2s infinite;
-  transition: letter-spacing .35s ease, filter .35s ease;
 }
 
-.featured-project__title-accent {
+.featured-project__tech-line--accent {
   color: #ff626c;
-  background: linear-gradient(105deg, #ff626c 0%, #ff626c 38%, #ffd0cb 50%, #ff626c 62%, #ff626c 100%);
-  background-size: 230% 100%;
-  background-position: 100% 0;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: featured-title-in .9s cubic-bezier(.2,.8,.2,1) both,
-    featured-title-sheen 5s ease-in-out 1.2s infinite;
-  transition: letter-spacing .35s ease, filter .35s ease;
-}
-
-.featured-project__period {
-  -webkit-text-fill-color: #f7f4f2;
-}
-
-.featured-project__title:hover .featured-project__title-accent {
-  letter-spacing: -.045em;
-  filter: drop-shadow(0 0 16px rgba(255,82,100,.35));
-}
-
-@keyframes featured-title-in {
-  from { opacity: .25; transform: translateY(24px); filter: blur(7px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes featured-title-sheen {
-  0%, 62% { background-position: 100% 0; }
-  82%, 100% { background-position: 0 0; }
 }
 
 .featured-project__details {
@@ -273,23 +248,8 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .featured-project__title > span {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-  .featured-project__title-accent {
-    animation: none;
-    background: none;
-    -webkit-text-fill-color: #ff626c;
-  }
-  .featured-project__title-main {
-    -webkit-text-fill-color: #f7f4f2;
-  }
-  .featured-project__title:hover .featured-project__title-accent,
-  .featured-project__title:hover .featured-project__title-main {
-    filter: none;
+@media (max-width: 700px) {
+  .featured-project__tech-line {
+    height: clamp(3.7rem, 12vw, 4.8rem);
   }
 }
