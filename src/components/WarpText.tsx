@@ -444,14 +444,6 @@ const WarpText = ({
     const container = containerRef.current;
     if (!container || typeof window === 'undefined') return undefined;
 
-    // Avoid continuously rendering WebGL shaders on phones and touch-first devices.
-    // The accessible text fallback keeps the visual clean without consuming GPU time.
-    const isMobileOrTouch = window.matchMedia('(max-width: 767px), (pointer: coarse)').matches;
-    if (isMobileOrTouch) {
-      setFailed(true);
-      return undefined;
-    }
-
     let renderer: Renderer;
     let gl: OGLRenderingContext;
     let program: Program;
