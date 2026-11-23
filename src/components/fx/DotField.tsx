@@ -9,6 +9,8 @@ export default function DotField() {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // This decorative canvas animates every frame; omit it on touch devices.
+    if (window.matchMedia('(max-width: 760px), (pointer: coarse)').matches) return undefined;
     const canvas = ref.current!;
     const ctx = canvas.getContext('2d')!;
     const reduced = prefersReducedMotion();
