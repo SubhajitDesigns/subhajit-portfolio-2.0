@@ -52,7 +52,7 @@ export default function HeroVideo({ play }: { play: boolean }) {
           className="hero-film__media block h-full w-auto max-w-none select-none object-contain"
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           disablePictureInPicture
           onEnded={() => setEnded(true)}
           onError={() => setFailed(true)}
