@@ -62,7 +62,7 @@ const links = [
 export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden px-4 pt-24 md:px-8 md:pt-32" aria-labelledby="contact-title">
-      <SectionLabel index="05">Contact</SectionLabel>
+      <SectionLabel index="07">Contact</SectionLabel>
 
       <h2 id="contact-title" className="mt-8 text-[clamp(2.6rem,6.4vw,6.8rem)] leading-[0.9] font-medium tracking-[-0.055em] md:mt-10">
         <SplitText text="Have an idea?" className="block" />
