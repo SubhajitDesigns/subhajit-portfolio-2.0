@@ -29,12 +29,12 @@ export default function Projects() {
           items={galleryItems}
           columns={5}
           tileWidth={240}
-          tileHeight={220}
+          tileHeight={154}
           gap={4}
           columnGap={28}
-          rowGap={0}
-          tilt={16}
-          turn={-14}
+          rowGap={8}
+          tilt={12}
+          turn={-8}
           perspective={1200}
           depth={120}
           speed={42}
@@ -45,7 +45,7 @@ export default function Projects() {
           fade={0}
           dim={1}
           overlayColor="transparent"
-          radius={16}
+          radius={18}
           roll={0}
           pauseOnHover={false}
           grayscale
