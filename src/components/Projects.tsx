@@ -299,7 +299,7 @@ export default function Projects() {
       });
 
       const projectIndex = ((active - count) % count + count) % count;
-      caption.textContent = String(projectIndex + 1).padStart(2, '0') + ' / ' +
+      caption!.textContent = String(projectIndex + 1).padStart(2, '0') + ' / ' +
         String(count).padStart(2, '0') + ' — ' + originals[projectIndex].dataset.title;
     }
 
