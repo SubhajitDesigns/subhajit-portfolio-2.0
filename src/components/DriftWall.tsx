@@ -114,7 +114,7 @@ const DriftWall = ({
       const plane = planeRef.current;
       if (!plane) return;
       plane.style.transform =
-        `translate(-50%, -50%) scale(1.18) ` +
+        `translate(-50%, -50%) scale(1.06) ` +
         `rotateX(${tilt + py}deg) rotateY(${turn + px}deg) rotateZ(${roll}deg) ` +
         `translateZ(${-depth}px)`;
     },
@@ -212,7 +212,7 @@ const DriftWall = ({
 
   const cssVars = useMemo(
     () => ({
-      '--dw-tile-w': `${tileWidth}px`,
+      '--dw-tile-w': `calc((100cqw / ${columns}) - ${gap}px)`,
       '--dw-tile-h': `${tileHeight}px`,
       '--dw-gap': `${gap}px`,
       '--dw-radius': `${radius}px`,
