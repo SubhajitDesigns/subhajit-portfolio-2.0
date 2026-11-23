@@ -1,5 +1,5 @@
 import './FeaturedProject.css';
-import TechText from './TechText';
+import WarpText from './WarpText';
 
 const prototypeUrl =
   'https://embed.figma.com/proto/zLy1K2P8M9Fr7EhkzVScLv/Movie-Poster-Manupulation?scaling=scale-down&content-scaling=fixed&page-id=0%3A1&node-id=10-53&embed-host=share&hide-ui=1';
@@ -16,10 +16,10 @@ export default function FeaturedProject() {
           <p className="featured-project__eyebrow">PHOTO MANIPULATION / 2024</p>
           <h2 id="featured-project-title" className="featured-project__title">
             <span className="featured-project__tech-line featured-project__tech-line--main">
-              <TechText text="REALITY," fontFamily="Space Grotesk, Inter, sans-serif" fontWeight={800} fontSize={150} letterSpacing={-0.075} color="#f7f4f2" accentColor="#ff626c" align="left" reach={115} softness={0.72} reveal="letter" specks={8} selection={false} labels={false} draggable={false} clickKick={false} sweep intro="assemble" introDuration={1.5} />
+              <WarpText text="REALITY," warpStrength={0.08} warpScale={1.7} speed={0.55} lens="bulge" pointerInfluence={0.42} pointerStrength={0.38} refraction={0.018} chromatic={0.35} idleDrift={0.2} ripple clickRipple intro fontSize={116} fontWeight={800} style={{ height: '100%' }} fontFamily="inherit" letterSpacing="-0.06em" lineHeight={0.9} color="#f7f4f2" />
             </span>
             <span className="featured-project__tech-line featured-project__tech-line--accent">
-              <TechText text="REIMAGINED." fontFamily="Space Grotesk, Inter, sans-serif" fontWeight={800} fontSize={150} letterSpacing={-0.075} color="#ff626c" accentColor="#f7f4f2" align="left" reach={115} softness={0.72} reveal="letter" specks={8} selection={false} labels={false} draggable={false} clickKick={false} sweep intro="assemble" introDuration={1.7} />
+              <WarpText text="REIMAGINED." warpStrength={0.08} warpScale={1.7} speed={0.55} lens="bulge" pointerInfluence={0.42} pointerStrength={0.38} refraction={0.018} chromatic={0.35} idleDrift={0.2} ripple clickRipple intro fontSize={116} fontWeight={800} style={{ height: '100%' }} fontFamily="inherit" letterSpacing="-0.06em" lineHeight={0.9} color="#ff626c" />
             </span>
           </h2>
         </div>
