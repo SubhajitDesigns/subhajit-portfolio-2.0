@@ -11,12 +11,22 @@ export default function FeaturedProject() {
       aria-labelledby="featured-project-title"
     >
       <div className="featured-project__content">
-        <p className="featured-project__eyebrow">SELECTED PROJECT</p>
-        <h2 id="featured-project-title">Movie Poster Manipulation</h2>
+        <p className="featured-project__eyebrow">FEATURED CREATIVE WORK</p>
+        <h2 id="featured-project-title">Reality,<br />Reframed.</h2>
         <p className="featured-project__description">
-          An interactive look at the poster transformation, from the original
-          image to the final cinematic artwork.
+          A cinematic poster transformation crafted through detailed photo
+          editing, dramatic light and visual compositing.
         </p>
+        <div className="featured-project__tools" aria-label="Tools used">
+          <span className="featured-project__tool">
+            <span className="featured-project__app-icon featured-project__app-icon--lr" aria-hidden="true">Lr</span>
+            <span>Lightroom</span>
+          </span>
+          <span className="featured-project__tool">
+            <span className="featured-project__app-icon featured-project__app-icon--ps" aria-hidden="true">Ps</span>
+            <span>Photoshop</span>
+          </span>
+        </div>
       </div>
 
       <div className="featured-project__frame">
