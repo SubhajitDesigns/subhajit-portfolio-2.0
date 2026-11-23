@@ -290,7 +290,8 @@ export default function Projects() {
     const count = originals.length;
     if (!count) return;
 
-    for (let cycle = 0; cycle < 2; cycle += 1) {
+    // One neighboring copy is enough for seamless wrap-around; avoid tripling 39 cards.
+    for (let cycle = 0; cycle < 1; cycle += 1) {
       originals.forEach((card) => {
         const clone = card.cloneNode(true) as HTMLElement;
         clone.setAttribute('aria-hidden', 'true');
