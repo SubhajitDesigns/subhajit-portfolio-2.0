@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { educationHistory, workExperience } from '../data/portfolio';
 import SectionLabel from './ui/SectionLabel';
 import SplitText from './ui/SplitText';
@@ -74,61 +75,53 @@ export default function Experience() {
       <div className="mt-20 md:mt-24">
         <div className="mb-6 flex items-baseline justify-between gap-4">
           <h3 className="font-mono text-[11px] tracking-[0.2em] text-muted uppercase">Certifications · 04</h3>
-          <span className="text-xs text-faint">Select a certificate to view it full size</span>
+          <span className="text-xs text-faint">View credentials</span>
         </div>
-        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-3 sm:grid-cols-2">
           {[
             {
               image: '/assets/certificates/pixel-institute.jpg',
-              alt: 'Adobe Photoshop CC-Retouching Masterclass certificate from Pixel Institute of Photography',
               issuer: 'PIXEL INSTITUTE OF PHOTOGRAPHY',
               name: 'Adobe Photoshop CC-Retouching Masterclass',
               date: '21 NOVEMBER 2021',
             },
             {
               image: '/assets/certificates/photoshop-training.jpg',
-              alt: 'Ultimate Photoshop Training from Beginners to Pro certificate',
               issuer: 'PHOTOSHOP TRAINING',
               name: 'Ultimate Photoshop Training — Beginners to Pro',
               date: '28 OCTOBER 2020',
             },
             {
               image: '/assets/certificates/adobe-certified.png',
-              alt: 'Adobe Certified Professional certificate in Visual Design using Adobe Photoshop',
               issuer: 'ADOBE',
               name: 'Adobe Certified Professional — Visual Design using Photoshop',
               date: '6 OCTOBER 2021',
             },
             {
               image: '/assets/certificates/linkedin-learning.jpg',
-              alt: 'LinkedIn Learning certificate for Cert Prep Adobe Certified Associate Photoshop',
               issuer: 'LINKEDIN LEARNING',
               name: 'Cert Prep: Adobe Certified Associate — Photoshop',
               date: '7 APRIL 2024',
             },
           ].map((certificate, i) => (
             <Reveal as="li" key={certificate.image} delay={i * 0.04} y={12} className="min-w-0">
-              <a
-                href={certificate.image}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`View certificate: ${certificate.name}`}
-                className="group block h-full"
-              >
-                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[3px] border border-line bg-white p-2 transition-colors duration-300 group-hover:border-fg">
-                  <img
-                    src={certificate.image}
-                    alt={certificate.alt}
-                    loading="lazy"
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.025]"
-                  />
-                </div>
-                <div className="pt-3">
+              <div className="flex h-full items-center justify-between gap-4 rounded-[3px] border border-line px-4 py-4 transition-colors duration-300 hover:border-fg/60 md:px-5">
+                <div className="min-w-0">
                   <span className="block font-mono text-[9px] tracking-[0.16em] text-muted uppercase">{certificate.issuer}</span>
-                  <span className="mt-1.5 block text-sm leading-snug font-medium">{certificate.name}</span>
+                  <h4 className="mt-1.5 text-sm font-medium leading-snug tracking-[-0.01em]">{certificate.name}</h4>
                   <span className="mt-2 block font-mono text-[9px] tracking-[0.12em] text-faint">{certificate.date}</span>
                 </div>
-              </a>
+                <a
+                  href={certificate.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`View certificate: ${certificate.name}`}
+                  title="View certificate"
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line text-muted transition-all duration-300 hover:border-fg hover:bg-fg hover:text-bg"
+                >
+                  <ArrowUpRight size={15} />
+                </a>
+              </div>
             </Reveal>
           ))}
         </ul>
