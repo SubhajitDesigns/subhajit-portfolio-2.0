@@ -16,10 +16,10 @@ export default function FeaturedProject() {
           <p className="featured-project__eyebrow">PHOTO MANIPULATION / 2024</p>
           <h2 id="featured-project-title" className="featured-project__title">
             <span className="featured-project__tech-line featured-project__tech-line--main">
-              <WarpText text="REALITY," warpStrength={0.08} warpScale={1.7} speed={0.55} lens="bulge" pointerInfluence={0.42} pointerStrength={0.38} refraction={0.018} chromatic={0.35} idleDrift={0.2} ripple clickRipple intro fontSize={180} fontWeight={800} style={{ height: '100%' }} fontFamily="inherit" letterSpacing="-0.14em" lineHeight={0.9} color="#f7f4f2" />
+              <WarpText text="REALITY," warpStrength={0.08} warpScale={1.7} speed={0.55} lens="bulge" pointerInfluence={0.42} pointerStrength={0.38} refraction={0.018} chromatic={0.35} idleDrift={0.2} ripple clickRipple intro fontSize={230} fontWeight={800} style={{ height: '100%' }} fontFamily="inherit" letterSpacing="-0.14em" lineHeight={0.9} color="#f7f4f2" />
             </span>
             <span className="featured-project__tech-line featured-project__tech-line--accent">
-              <WarpText text="REIMAGINED." warpStrength={0.08} warpScale={1.7} speed={0.55} lens="bulge" pointerInfluence={0.42} pointerStrength={0.38} refraction={0.018} chromatic={0.35} idleDrift={0.2} ripple clickRipple intro fontSize={180} fontWeight={800} style={{ height: '100%' }} fontFamily="inherit" letterSpacing="-0.14em" lineHeight={0.9} color="#ff626c" />
+              <WarpText text="REIMAGINED." warpStrength={0.08} warpScale={1.7} speed={0.55} lens="bulge" pointerInfluence={0.42} pointerStrength={0.38} refraction={0.018} chromatic={0.35} idleDrift={0.2} ripple clickRipple intro fontSize={230} fontWeight={800} style={{ height: '100%' }} fontFamily="inherit" letterSpacing="-0.14em" lineHeight={0.9} color="#ff626c" />
             </span>
           </h2>
         </div>
