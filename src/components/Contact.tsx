@@ -88,7 +88,7 @@ export default function Contact() {
               <CopyEmail />
               <Magnetic>
                 <a
-                  href={`mailto:${profile.email}?subject=${encodeURIComponent("Hello Subhajit — let us work together")}`}
+                  href="https://wa.me/917679147589"
                   className="group inline-flex items-center gap-2 rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
                 >
                   Chat on WhatsApp
