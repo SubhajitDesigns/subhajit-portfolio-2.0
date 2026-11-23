@@ -38,7 +38,6 @@ export default function Experience() {
                 </div>
                 <p className="mt-1 text-sm text-muted">
                   <span className="text-fg">{t.org}</span>
-                  {t.place ? ` · ${t.place}` : ''}
                 </p>
                 <ul className="mt-3 space-y-1.5 text-[15px] leading-relaxed text-muted">
                   {t.points.map((pt) => (
