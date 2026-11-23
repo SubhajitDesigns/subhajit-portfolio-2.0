@@ -14,7 +14,7 @@ export default function FeaturedProject() {
         <div className="featured-project__heading">
           <p className="featured-project__eyebrow">PHOTO MANIPULATION / 2024</p>
           <h2 id="featured-project-title" className="featured-project__title">
-            <span>REALITY,</span>
+            <span className="featured-project__title-main">REALITY,</span>
             <span className="featured-project__title-accent">REIMAGINED<span className="featured-project__period">.</span></span>
           </h2>
         </div>
@@ -36,12 +36,7 @@ export default function FeaturedProject() {
                 <span>Photoshop</span>
               </span>
             </div>
-            <div className="featured-project__interaction-hint" aria-label="Slide to interact with the photo">
-                      <svg className="featured-project__slide-arrow" viewBox="0 0 32 16" aria-hidden="true">
-                        <path d="M8 2 2 8l6 6M2 8h28M24 2l6 6-6 6" />
-                      </svg>
-                      <span className="featured-project__typing-text">SLIDE TO INTERACT</span>
-                    </div>
+
           </div>
         </div>
       </div>
@@ -54,12 +49,6 @@ export default function FeaturedProject() {
             allowFullScreen
             loading="lazy"
           />
-        </div>
-        <div className="featured-project__interaction-hint" aria-label="Slide to interact with the photo">
-          <svg className="featured-project__slide-arrow" viewBox="0 0 32 16" aria-hidden="true">
-            <path d="M8 2 2 8l6 6M2 8h28M24 2l6 6-6 6" />
-          </svg>
-          <span className="featured-project__typing-text">SLIDE TO INTERACT</span>
         </div>
       </div>
     </section>
