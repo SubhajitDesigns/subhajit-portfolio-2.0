@@ -190,36 +190,58 @@ export const projects: Project[] = [
   },
 ];
 
-export type TimelineItem = { period: string; title: string; org: string; place?: string; kind: string; points: string[] };
+export type WorkExperienceItem = { period: string; title: string; org: string; points: string[] };
 
-export const timeline: TimelineItem[] = [
+export const workExperience: WorkExperienceItem[] = [
   {
-    period: 'May 2025 — Jun 2026',
-    title: 'Full-Stack Development Trainee',
-    org: 'Technical Hub Pvt Ltd',
-    place: 'Surampalem, AP',
-    kind: 'Work',
+    period: 'Aug 2024 — 2026',
+    title: 'Senior Video Editor',
+    org: 'Kreative Draft',
     points: [
-      'Completed one year of intensive Full-Stack Development training covering frontend, backend, database integration, and deployment workflows.',
-      'Developed responsive, functional web applications — user interfaces, server-side logic, and database connectivity.',
-      'Deployed and managed web applications with version control, debugging, and end-to-end development practices.',
+      'Edited reels and short-form videos, focusing on clear storytelling and platform-ready delivery.',
+      'Handled a high-volume daily workload, typically delivering three video creatives alongside four visual assets.',
+      'Maintained consistent visual standards across multiple deliverables and deadlines.',
     ],
   },
   {
-    period: 'Oct 2023 — Present',
-    title: 'B.Tech, Artificial Intelligence & Machine Learning',
-    org: 'Aditya Engineering College',
-    place: 'Surampalem',
-    kind: 'Education',
-    points: ['CGPA 9.10.', 'AIML Branch Topper with a 9.24 SGPA for the semester.'],
+    period: 'Jun 2022 — Jan 2024',
+    title: 'Associate Graphic Designer',
+    org: 'Icex Media',
+    points: [
+      'Created Google Ads creatives in multiple formats to support online advertising campaigns.',
+      'Designed print-ready banners and promotional materials for offline marketing and brand visibility.',
+      'Produced 3 motion graphic reels per day for social media marketing and brand promotion.',
+    ],
   },
   {
-    period: 'Jun 2021 — May 2023',
-    title: 'Intermediate, MPC',
-    org: 'Sri Chaitanya Junior College',
-    place: 'Kakinada',
-    kind: 'Education',
-    points: ['BIEAP — scored 925 / 1000.'],
+    period: 'Jul 2019 — 2022',
+    title: 'Freelance Graphic Designer',
+    org: 'Independent',
+    points: [
+      'Provided creative services to businesses and brands across multiple industries.',
+      'Worked with clients to understand briefs, refine concepts, and deliver completed projects.',
+      'Built brand identities, logos, social media content, and promotional materials.',
+    ],
+  },
+];
+
+export type EducationItem = { period: string; qualification: string; institution: string };
+
+export const educationHistory: EducationItem[] = [
+  {
+    period: '2020',
+    qualification: 'Bachelor of Commerce (B.Com), Honors in Marketing Management',
+    institution: 'Kaibalyadayini College (KD College of Commerce)',
+  },
+  {
+    period: '2017',
+    qualification: 'Higher Secondary',
+    institution: 'West Bengal Board of Higher Secondary Education',
+  },
+  {
+    period: '2014',
+    qualification: 'Secondary',
+    institution: 'West Bengal Board of Secondary Education',
   },
 ];
 
